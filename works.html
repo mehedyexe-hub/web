@@ -2,13 +2,12 @@
 <html lang="bn">
   <head>
     <meta charset="UTF-8" />
-
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0"
     />
 
-    <title>Create Hub - My Works</title>
+    <title>My Works - Create Hub</title>
 
     <style>
       * {
@@ -17,282 +16,303 @@
         box-sizing: border-box;
       }
 
-      html {
-        scroll-behavior: smooth;
-      }
-
       body {
         font-family: Arial, "Noto Sans Bengali", sans-serif;
-
-        color: #edf1ff;
-
         min-height: 100vh;
-
-        padding-bottom: 50px;
+        color: #eef2ff;
 
         background:
-          radial-gradient(circle at 10% 10%, #273d70, transparent 30%),
-          radial-gradient(circle at 90% 20%, #5b396c, transparent 30%), #0d1422;
+          radial-gradient(circle at 10% 10%, #203c72 0%, transparent 35%),
+          radial-gradient(circle at 90% 20%, #4b2458 0%, transparent 35%),
+          #091120;
       }
 
       .container {
-        width: 92%;
-
-        max-width: 1050px;
-
+        width: min(900px, 92%);
         margin: auto;
+        padding: 45px 0 35px;
       }
 
       /* =========================
-   TOP
-========================= */
+       TOP HEADER
+    ========================== */
 
-      .top {
-        margin-top: 25px;
-
+      .top-box {
         display: flex;
-
+        align-items: center;
         justify-content: space-between;
 
-        align-items: center;
+        padding: 22px 26px;
 
-        padding: 16px 20px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 28px;
 
-        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.055);
 
-        background: rgba(255, 255, 255, 0.06);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
 
-        backdrop-filter: blur(15px);
-
-        border: 1px solid rgba(255, 255, 255, 0.09);
+        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.18);
       }
 
       .logo {
-        font-size: 22px;
-
+        font-size: 30px;
         font-weight: 800;
 
-        background: linear-gradient(90deg, #91a4ff, #d38ce9, #6ed9bd);
+        background: linear-gradient(90deg, #8c9cff, #d16cff);
 
         -webkit-background-clip: text;
-
         background-clip: text;
 
         color: transparent;
       }
 
-      .back {
-        text-decoration: none;
+      /* BACK BUTTON */
 
-        color: #d3dbff;
+      .back-btn {
+        border: none;
+
+        color: #eef0ff;
 
         background: rgba(255, 255, 255, 0.08);
 
-        padding: 10px 16px;
+        padding: 16px 25px;
 
-        border-radius: 12px;
+        border-radius: 18px;
 
-        font-size: 13px;
+        font-size: 17px;
 
-        transition: 0.3s;
+        cursor: pointer;
+
+        transition: 0.25s;
       }
 
-      .back:hover {
-        transform: translateY(-3px);
+      .back-btn:hover {
+        background: rgba(255, 255, 255, 0.15);
 
-        background: rgba(255, 255, 255, 0.14);
+        transform: translateY(-2px);
       }
 
       /* =========================
-   TITLE
-========================= */
+       HERO
+    ========================== */
 
       .hero {
         text-align: center;
 
-        padding: 75px 15px 50px;
+        padding: 75px 15px 55px;
       }
 
       .hero h1 {
-        font-size: clamp(40px, 7vw, 65px);
+        font-size: clamp(48px, 8vw, 72px);
 
-        margin-bottom: 17px;
+        margin-bottom: 25px;
 
-        background: linear-gradient(90deg, #91a4ff, #d38ce9, #6ed9bd);
+        background: linear-gradient(90deg, #a18cff, #dc78ff);
 
         -webkit-background-clip: text;
-
         background-clip: text;
 
         color: transparent;
+
+        font-weight: 800;
       }
 
       .hero p {
-        color: #aeb8ca;
+        color: #b8bfd3;
 
-        line-height: 1.8;
+        font-size: 21px;
 
-        max-width: 650px;
-
-        margin: auto;
-      } .back-box {
-    width: 100%;
-    max-width: 1180px;
-    height: 85px;
-
-    margin: 30px auto 0;
-    padding: 18px 24px;
-
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    border-radius: 0 25px 25px 0;
-
-    backdrop-filter: blur(10px);
-}
-
-.back-btn {
-    padding: 12px 22px;
-
-    color: #e9e1f2;
-    background: rgba(255, 255, 255, 0.12);
-
-    border-radius: 15px;
-
-    text-decoration: none;
-    font-size: 17px;
-    font-weight: 500;
-
-    transition: 0.3s ease;
-}
-
-.back-btn:hover {
-    background: rgba(255, 255, 255, 0.20);
-    transform: translateY(-2px);
-}
+        line-height: 1.9;
+      }
 
       /* =========================
-   WORK GRID
-========================= */
+       WORK CARDS
+    ========================== */
 
       .works {
         display: grid;
-
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-
-        gap: 22px;
+        gap: 25px;
       }
 
-      /* =========================
-   WORK CARD
-========================= */
+      .card {
+        padding: 45px 48px;
 
-      .work {
-        padding: 26px;
+        border-radius: 30px;
 
-        border-radius: 23px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
 
         background: rgba(255, 255, 255, 0.055);
 
-        border: 1px solid rgba(255, 255, 255, 0.09);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
 
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
-
-        transition: 0.4s;
-      }
-
-      .work:hover {
-        transform: translateY(-8px);
-
-        border-color: rgba(150, 170, 255, 0.35);
-      }
-
-      .work-icon {
-        font-size: 42px;
-
-        margin-bottom: 15px;
-      }
-
-      .work h2 {
-        font-size: 21px;
-
-        margin-bottom: 10px;
-      }
-
-      .work p {
-        color: #aeb8ca;
-
-        font-size: 14px;
-
-        line-height: 1.8;
-
-        margin-bottom: 20px;
-      }
-
-      .visit {
-        display: inline-block;
-
-        text-decoration: none;
-
-        color: white;
-
-        padding: 12px 18px;
-
-        border-radius: 12px;
-
-        font-weight: bold;
-
-        background: linear-gradient(135deg, #6175e8, #a765d9);
+        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15);
 
         transition: 0.3s;
       }
 
-      .visit:hover {
-        transform: translateY(-4px);
+      .card:hover {
+        transform: translateY(-5px);
 
-        box-shadow: 0 10px 25px rgba(100, 110, 220, 0.25);
+        border-color: rgba(180, 150, 255, 0.35);
+      }
+
+      .emoji {
+        font-size: 58px;
+
+        margin-bottom: 20px;
+      }
+
+      .card h2 {
+        font-size: 34px;
+
+        margin-bottom: 20px;
+
+        color: #edf0ff;
+      }
+
+      .card p {
+        color: #b8bfd3;
+
+        font-size: 19px;
+
+        line-height: 1.8;
+
+        margin-bottom: 28px;
       }
 
       /* =========================
-   FOOTER
-========================= */
+       BUTTONS
+    ========================== */
+
+      .buttons {
+        display: flex;
+
+        gap: 14px;
+
+        flex-wrap: wrap;
+
+        margin-top: 10px;
+      }
+
+      .btn {
+        display: inline-block;
+
+        text-decoration: none;
+
+        border: none;
+
+        padding: 15px 25px;
+
+        border-radius: 18px;
+
+        font-size: 17px;
+
+        font-weight: 700;
+
+        cursor: pointer;
+
+        transition: 0.25s;
+      }
+
+      /* VIEW WEBSITE BUTTON */
+
+      .view-btn {
+        color: white;
+
+        background: linear-gradient(135deg, #6577ff, #c04fe8);
+
+        box-shadow: 0 8px 25px rgba(160, 80, 240, 0.25);
+      }
+
+      .view-btn:hover {
+        transform: translateY(-3px);
+
+        filter: brightness(1.1);
+      }
+
+      /* =========================
+       FOOTER
+    ========================== */
 
       footer {
         text-align: center;
 
-        margin-top: 65px;
+        color: #858da4;
 
-        color: #8994aa;
+        font-size: 17px;
 
-        font-size: 13px;
+        padding: 80px 0 15px;
       }
 
       /* =========================
-   MOBILE
-========================= */
+       MOBILE
+    ========================== */
 
       @media (max-width: 600px) {
-        .top {
-          padding: 13px 14px;
+        .container {
+          width: 92%;
+
+          padding-top: 25px;
+        }
+
+        .top-box {
+          padding: 18px;
+
+          border-radius: 23px;
         }
 
         .logo {
-          font-size: 19px;
+          font-size: 23px;
+        }
+
+        .back-btn {
+          padding: 13px 17px;
+
+          font-size: 15px;
         }
 
         .hero {
-          padding-top: 55px;
+          padding: 60px 8px 45px;
         }
 
         .hero h1 {
-          font-size: 40px;
+          font-size: 48px;
         }
 
-        .works {
-          grid-template-columns: 1fr;
+        .hero p {
+          font-size: 17px;
+
+          line-height: 1.8;
+        }
+
+        .card {
+          padding: 32px 27px;
+
+          border-radius: 25px;
+        }
+
+        .emoji {
+          font-size: 52px;
+        }
+
+        .card h2 {
+          font-size: 28px;
+        }
+
+        .card p {
+          font-size: 17px;
+        }
+
+        .buttons {
+          flex-direction: column;
+        }
+
+        .btn {
+          text-align: center;
+
+          width: 100%;
         }
       }
     </style>
@@ -300,56 +320,75 @@
 
   <body>
     <div class="container">
-      <!-- TOP -->
+      <!-- =========================
+         HEADER
+    ========================== -->
 
-      <div class="top">
+      <div class="top-box">
         <div class="logo">Create Hub</div>
 
-        <a
-          href="first.html"
-          class="back"
+        <!-- BACK BUTTON -->
+
+        <button
+          class="back-btn"
+          onclick="goBack()"
         >
           ← ফিরে যান
-        </a>
+        </button>
       </div>
 
-      <!-- TITLE -->
+      <!-- =========================
+         HERO
+    ========================== -->
 
-      <div class="hero">
+      <section class="hero">
         <h1>My Works</h1>
 
         <p>
-          আগে বানানো কিছু Website এখানে দেখা যাবে। নতুন Website তৈরি হলে এখানেই
-          তার Link যোগ করা যাবে।
+          আগে বানানো কিছু Website এখানে দেখা যাবে।<br />
+
+          নতুন Website তৈরি হলে এখানেই তার Link যোগ করা যাবে।
         </p>
-      </div>
+      </section>
 
-      <!-- WORKS -->
+      <!-- =========================
+         WORKS
+    ========================== -->
 
-      <div class="works">
-        <!-- Birthday Website -->
+      <section class="works">
+        <!-- =================================
+           BIRTHDAY WISH WEBSITE
+      ================================== -->
 
-        <div class="work">
-          <div class="work-icon">🎂</div>
+        <div class="card">
+          <div class="emoji">🎂</div>
 
           <h2>Birthday Wish Website</h2>
 
           <p>
             একটি Birthday Wish Website, যেখানে Birthday Message, Animation এবং
-            Surprise রয়েছে।
+            Surprise রয়েছে।
           </p>
 
-         <a
-          href="https://mehedyexe-hub.github.io/web/"
-          class="back-btn"
-        >
-        </a>
+          <!-- VIEW WEBSITE BUTTON -->
+
+          <div class="buttons">
+            <a
+              class="btn view-btn"
+              href="https://mehedyexe-hub.github.io/tanvirr/"
+              target="_blank"
+            >
+              View Website →
+            </a>
+          </div>
         </div>
 
-        <!-- ADD NEW WEBSITE HERE -->
+        <!-- =================================
+           NEW WEBSITE
+      ================================== -->
 
-        <div class="work">
-          <div class="work-icon">✨</div>
+        <div class="card">
+          <div class="emoji">✨</div>
 
           <h2>নতুন Website</h2>
 
@@ -358,16 +397,47 @@
             করা যাবে।
           </p>
 
-         <a
-            href="https://mehedyexe-hub.github.io/web/index.html#contact"
-            class="visit"
-          >
-            Website বানাতে চাই →
-          </a>
+          <!-- BUILD WEBSITE BUTTON -->
+
+          <div class="buttons">
+            <a
+              class="btn view-btn"
+              href="https://mehedyexe-hub.github.io/web/#contact"
+            >
+              Website বানাতে চাই →
+            </a>
+          </div>
         </div>
-      </div>
+      </section>
+
+      <!-- =========================
+         FOOTER
+    ========================== -->
 
       <footer>© 2026 Create Hub</footer>
     </div>
+
+    <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
+    <script>
+      function goBack() {
+        /*
+        আগের page থাকলে সেখানে যাবে।
+      */
+
+        if (window.history.length > 1 && document.referrer) {
+          history.back();
+        } else {
+          /*
+          সরাসরি এই page open করলে
+          /web/ page-এ যাবে।
+        */
+
+          window.location.href = "https://mehedyexe-hub.github.io/web/";
+        }
+      }
+    </script>
   </body>
 </html>
