@@ -2,6 +2,7 @@
 <html lang="bn">
   <head>
     <meta charset="UTF-8" />
+
     <meta
       name="viewport"
       content="width=device-width, initial-scale=1.0"
@@ -18,38 +19,48 @@
 
       body {
         font-family: Arial, "Noto Sans Bengali", sans-serif;
+
         min-height: 100vh;
+
         color: #eef2ff;
 
         background:
-          radial-gradient(circle at 10% 10%, #203c72 0%, transparent 35%),
-          radial-gradient(circle at 90% 20%, #4b2458 0%, transparent 35%),
+          radial-gradient(circle at 10% 5%, #203c72 0%, transparent 34%),
+          radial-gradient(circle at 90% 20%, #4b2458 0%, transparent 34%),
           #091120;
       }
 
       .container {
         width: min(900px, 92%);
+
         margin: auto;
-        padding: 45px 0 35px;
+
+        padding: 40px 0 35px;
       }
 
       /* =========================
-       TOP HEADER
+       HEADER
     ========================== */
 
       .top-box {
         display: flex;
+
         align-items: center;
+
         justify-content: space-between;
+
+        gap: 20px;
 
         padding: 22px 26px;
 
         border: 1px solid rgba(255, 255, 255, 0.12);
+
         border-radius: 28px;
 
         background: rgba(255, 255, 255, 0.055);
 
         backdrop-filter: blur(18px);
+
         -webkit-backdrop-filter: blur(18px);
 
         box-shadow: 0 15px 45px rgba(0, 0, 0, 0.18);
@@ -57,17 +68,21 @@
 
       .logo {
         font-size: 30px;
+
         font-weight: 800;
 
         background: linear-gradient(90deg, #8c9cff, #d16cff);
 
         -webkit-background-clip: text;
+
         background-clip: text;
 
         color: transparent;
       }
 
-      /* BACK BUTTON */
+      /* =========================
+       BACK BUTTON
+    ========================== */
 
       .back-btn {
         border: none;
@@ -76,7 +91,7 @@
 
         background: rgba(255, 255, 255, 0.08);
 
-        padding: 16px 25px;
+        padding: 15px 24px;
 
         border-radius: 18px;
 
@@ -106,16 +121,17 @@
       .hero h1 {
         font-size: clamp(48px, 8vw, 72px);
 
-        margin-bottom: 25px;
+        margin-bottom: 24px;
+
+        font-weight: 800;
 
         background: linear-gradient(90deg, #a18cff, #dc78ff);
 
         -webkit-background-clip: text;
+
         background-clip: text;
 
         color: transparent;
-
-        font-weight: 800;
       }
 
       .hero p {
@@ -127,16 +143,17 @@
       }
 
       /* =========================
-       WORK CARDS
+       WORKS
     ========================== */
 
       .works {
         display: grid;
+
         gap: 25px;
       }
 
       .card {
-        padding: 45px 48px;
+        padding: 42px 48px;
 
         border-radius: 30px;
 
@@ -145,11 +162,12 @@
         background: rgba(255, 255, 255, 0.055);
 
         backdrop-filter: blur(18px);
+
         -webkit-backdrop-filter: blur(18px);
 
         box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15);
 
-        transition: 0.3s;
+        transition: 0.3s ease;
       }
 
       .card:hover {
@@ -167,7 +185,7 @@
       .card h2 {
         font-size: 34px;
 
-        margin-bottom: 20px;
+        margin-bottom: 18px;
 
         color: #edf0ff;
       }
@@ -179,11 +197,11 @@
 
         line-height: 1.8;
 
-        margin-bottom: 28px;
+        margin-bottom: 25px;
       }
 
       /* =========================
-       BUTTONS
+       NORMAL BUTTON
     ========================== */
 
       .buttons {
@@ -192,8 +210,6 @@
         gap: 14px;
 
         flex-wrap: wrap;
-
-        margin-top: 10px;
       }
 
       .btn {
@@ -213,10 +229,8 @@
 
         cursor: pointer;
 
-        transition: 0.25s;
+        transition: 0.25s ease;
       }
-
-      /* VIEW WEBSITE BUTTON */
 
       .view-btn {
         color: white;
@@ -230,6 +244,266 @@
         transform: translateY(-3px);
 
         filter: brightness(1.1);
+      }
+
+      /* =========================
+       PASSWORD OVERLAY
+    ========================== */
+
+      .private-overlay {
+        position: fixed;
+
+        inset: 0;
+
+        display: none;
+
+        align-items: center;
+
+        justify-content: center;
+
+        padding: 20px;
+
+        background: rgba(3, 8, 20, 0.84);
+
+        backdrop-filter: blur(12px);
+
+        -webkit-backdrop-filter: blur(12px);
+
+        z-index: 9999;
+      }
+
+      .private-overlay.show {
+        display: flex;
+      }
+
+      /* =========================
+       PASSWORD BOX
+    ========================== */
+
+      .private-box {
+        width: min(450px, 100%);
+
+        padding: 35px 30px;
+
+        text-align: center;
+
+        border: 1px solid rgba(255, 255, 255, 0.15);
+
+        border-radius: 28px;
+
+        background: linear-gradient(
+          145deg,
+          rgba(35, 43, 67, 0.98),
+          rgba(25, 29, 48, 0.98)
+        );
+
+        box-shadow: 0 25px 80px rgba(0, 0, 0, 0.45);
+
+        animation: popupIn 0.25s ease;
+      }
+
+      @keyframes popupIn {
+        from {
+          opacity: 0;
+
+          transform: scale(0.92) translateY(10px);
+        }
+
+        to {
+          opacity: 1;
+
+          transform: scale(1) translateY(0);
+        }
+      }
+
+      .private-icon {
+        font-size: 50px;
+
+        margin-bottom: 15px;
+      }
+
+      .private-box h2 {
+        color: #f0f2ff;
+
+        font-size: 28px;
+
+        margin-bottom: 12px;
+      }
+
+      .private-box p {
+        color: #aeb7cd;
+
+        font-size: 16px;
+
+        line-height: 1.6;
+
+        margin-bottom: 22px;
+      }
+
+      /* =========================
+       INPUT
+    ========================== */
+
+      .private-box input {
+        width: 100%;
+
+        padding: 15px 17px;
+
+        border-radius: 15px;
+
+        border: 1px solid rgba(255, 255, 255, 0.14);
+
+        outline: none;
+
+        background: rgba(255, 255, 255, 0.08);
+
+        color: white;
+
+        font-size: 16px;
+
+        text-align: center;
+      }
+
+      .private-box input::placeholder {
+        color: #8992a9;
+      }
+
+      .private-box input:focus {
+        border-color: #9b7cff;
+
+        box-shadow: 0 0 0 3px rgba(155, 124, 255, 0.12);
+      }
+
+      /* =========================
+       ERROR
+    ========================== */
+
+      .password-error {
+        display: none;
+
+        color: #ff7d91;
+
+        font-size: 14px;
+
+        margin-top: 12px;
+      }
+
+      .password-error.show {
+        display: block;
+      }
+
+      /* =========================
+       ENTER / CANCEL
+    ========================== */
+
+      .private-buttons {
+        display: flex;
+
+        gap: 10px;
+
+        margin-top: 18px;
+      }
+
+      .private-enter,
+      .private-cancel {
+        flex: 1;
+
+        border: none;
+
+        padding: 14px;
+
+        border-radius: 15px;
+
+        font-size: 16px;
+
+        font-weight: 700;
+
+        cursor: pointer;
+
+        transition: 0.25s;
+      }
+
+      .private-enter {
+        color: white;
+
+        background: linear-gradient(135deg, #6577ff, #c04fe8);
+      }
+
+      .private-cancel {
+        color: #e9edff;
+
+        background: rgba(255, 255, 255, 0.09);
+      }
+
+      .private-enter:hover,
+      .private-cancel:hover {
+        transform: translateY(-2px);
+      }
+
+      /* =========================
+       SECRET OPTIONS
+    ========================== */
+
+      .secret-options {
+        display: none;
+
+        gap: 14px;
+
+        margin-top: 22px;
+      }
+
+      .secret-options.show {
+        display: flex;
+      }
+
+      .secret-option {
+        flex: 1;
+
+        padding: 18px 12px;
+
+        border-radius: 18px;
+
+        text-decoration: none;
+
+        color: white;
+
+        font-size: 17px;
+
+        font-weight: 700;
+
+        transition: 0.25s;
+      }
+
+      .sorry-option {
+        background: linear-gradient(135deg, #ff5d75, #d92f64);
+
+        box-shadow: 0 8px 25px rgba(255, 80, 110, 0.2);
+      }
+
+      .ntg-option {
+        background: linear-gradient(135deg, #6577ff, #9c5cff);
+
+        box-shadow: 0 8px 25px rgba(100, 100, 255, 0.2);
+      }
+
+      .secret-option:hover {
+        transform: translateY(-3px);
+
+        filter: brightness(1.1);
+      }
+
+      .secret-title {
+        display: none;
+
+        color: #b8bfd3;
+
+        font-size: 15px;
+
+        margin-top: 18px;
+      }
+
+      .secret-title.show {
+        display: block;
       }
 
       /* =========================
@@ -310,9 +584,27 @@
         }
 
         .btn {
-          text-align: center;
-
           width: 100%;
+
+          text-align: center;
+        }
+
+        .private-box {
+          padding: 30px 22px;
+
+          border-radius: 24px;
+        }
+
+        .private-box h2 {
+          font-size: 25px;
+        }
+
+        .private-buttons {
+          flex-direction: column;
+        }
+
+        .secret-options {
+          flex-direction: column;
         }
       }
     </style>
@@ -326,8 +618,6 @@
 
       <div class="top-box">
         <div class="logo">Create Hub</div>
-
-        <!-- BACK BUTTON -->
 
         <button
           class="back-btn"
@@ -356,9 +646,9 @@
     ========================== -->
 
       <section class="works">
-        <!-- =================================
-           BIRTHDAY WISH WEBSITE
-      ================================== -->
+        <!-- =========================
+           BIRTHDAY WEBSITE
+      ========================== -->
 
         <div class="card">
           <div class="emoji">🎂</div>
@@ -370,22 +660,42 @@
             Surprise রয়েছে।
           </p>
 
-          <!-- VIEW WEBSITE BUTTON -->
-
           <div class="buttons">
             <a
               class="btn view-btn"
               href="https://mehedyexe-hub.github.io/tanvirr/"
-              target="_blank"
             >
               View Website →
             </a>
           </div>
         </div>
 
-        <!-- =================================
+        <!-- =========================
+           PRIVATE WEBSITE
+      ========================== -->
+
+        <div class="card">
+          <div class="emoji">🔒</div>
+
+          <h2>Private Website</h2>
+
+          <p>
+            এটি একটি Private Website। Website দেখতে হলে আগে Password দিতে হবে।
+          </p>
+
+          <div class="buttons">
+            <button
+              class="btn view-btn"
+              onclick="openPrivateLogin()"
+            >
+              View Website →
+            </button>
+          </div>
+        </div>
+
+        <!-- =========================
            NEW WEBSITE
-      ================================== -->
+      ========================== -->
 
         <div class="card">
           <div class="emoji">✨</div>
@@ -397,12 +707,10 @@
             করা যাবে।
           </p>
 
-          <!-- BUILD WEBSITE BUTTON -->
-
           <div class="buttons">
             <a
               class="btn view-btn"
-              href="https://mehedyexe-hub.github.io/web/#contact"
+              href="https://mehedyexe-hub.github.io/web/#services"
             >
               Website বানাতে চাই →
             </a>
@@ -418,23 +726,212 @@
     </div>
 
     <!-- =========================
+       PASSWORD POPUP
+  ========================== -->
+
+    <div
+      id="privateLogin"
+      class="private-overlay"
+    >
+      <div class="private-box">
+        <div class="private-icon">🔐</div>
+
+        <h2>Private Website</h2>
+
+        <p>এই Website দেখতে Password দিন।</p>
+
+        <!-- PASSWORD INPUT -->
+
+        <input
+          type="password"
+          id="privatePassword"
+          placeholder="Password লিখুন..."
+          autocomplete="off"
+        />
+
+        <!-- ERROR -->
+
+        <div
+          id="passwordError"
+          class="password-error"
+        >
+          ❌ ভুল Password! আবার চেষ্টা করুন।
+        </div>
+
+        <!-- ENTER / CANCEL -->
+
+        <div
+          id="privateButtons"
+          class="private-buttons"
+        >
+          <button
+            class="private-enter"
+            onclick="checkPrivatePassword()"
+          >
+            Enter →
+          </button>
+
+          <button
+            class="private-cancel"
+            onclick="closePrivateLogin()"
+          >
+            Cancel
+          </button>
+        </div>
+
+        <!-- =========================
+           SECRET OPTIONS
+      ========================== -->
+
+        <div
+          id="secretTitle"
+          class="secret-title"
+        >
+          Password সঠিক হয়েছে। একটি Website নির্বাচন করুন:
+        </div>
+
+        <div
+          id="secretOptions"
+          class="secret-options"
+        >
+          <!-- SORRY -->
+
+          <a
+            class="secret-option sorry-option"
+            href="https://mehedyexe-hub.github.io/sorry/"
+          >
+            ❤️ Sorry
+          </a>
+
+          <!-- NTG -->
+
+          <a
+            class="secret-option ntg-option"
+            href="https://mehedyexe-hub.github.io/she-me/"
+          >
+            💌 NTG
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- =========================
        JAVASCRIPT
   ========================== -->
 
     <script>
-      function goBack() {
-        /*
-        আগের page থাকলে সেখানে যাবে।
-      */
+      /* =========================
+       PASSWORD
+    ========================== */
 
-        if (window.history.length > 1 && document.referrer) {
+      const PRIVATE_PASSWORD = "@tisanulislam00.pass";
+
+      /* =========================
+       OPEN LOGIN
+    ========================== */
+
+      function openPrivateLogin() {
+        document.getElementById("privateLogin").classList.add("show");
+
+        document.getElementById("privatePassword").value = "";
+
+        document.getElementById("passwordError").classList.remove("show");
+
+        document.getElementById("secretOptions").classList.remove("show");
+
+        document.getElementById("secretTitle").classList.remove("show");
+
+        document.getElementById("privateButtons").style.display = "flex";
+
+        setTimeout(function () {
+          document.getElementById("privatePassword").focus();
+        }, 100);
+      }
+
+      /* =========================
+       CLOSE LOGIN
+    ========================== */
+
+      function closePrivateLogin() {
+        document.getElementById("privateLogin").classList.remove("show");
+      }
+
+      /* =========================
+       CHECK PASSWORD
+    ========================== */
+
+      function checkPrivatePassword() {
+        const input = document.getElementById("privatePassword");
+
+        const error = document.getElementById("passwordError");
+
+        const secretOptions = document.getElementById("secretOptions");
+
+        const secretTitle = document.getElementById("secretTitle");
+
+        const privateButtons = document.getElementById("privateButtons");
+
+        const enteredPassword = input.value;
+
+        /* =========================
+         CORRECT PASSWORD
+      ========================== */
+
+        if (enteredPassword === PRIVATE_PASSWORD) {
+          error.classList.remove("show");
+
+          input.style.display = "none";
+
+          privateButtons.style.display = "none";
+
+          secretTitle.classList.add("show");
+
+          secretOptions.classList.add("show");
+        } else {
+
+        /* =========================
+         WRONG PASSWORD
+      ========================== */
+          error.classList.add("show");
+
+          input.value = "";
+
+          input.focus();
+        }
+      }
+
+      /* =========================
+       ENTER KEY
+    ========================== */
+
+      document
+        .getElementById("privatePassword")
+        .addEventListener("keydown", function (event) {
+          if (event.key === "Enter") {
+            checkPrivatePassword();
+          }
+        });
+
+      /* =========================
+       CLICK OUTSIDE POPUP
+    ========================== */
+
+      document
+        .getElementById("privateLogin")
+        .addEventListener("click", function (event) {
+          if (event.target === this) {
+            closePrivateLogin();
+          }
+        });
+
+      /* =========================
+       BACK BUTTON
+    ========================== */
+
+      function goBack() {
+        if (document.referrer && window.history.length > 1) {
           history.back();
         } else {
-          /*
-          সরাসরি এই page open করলে
-          /web/ page-এ যাবে।
-        */
-
           window.location.href = "https://mehedyexe-hub.github.io/web/";
         }
       }
