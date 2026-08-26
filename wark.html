@@ -1,0 +1,469 @@
+<!doctype html>
+<html lang="bn">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0"
+    />
+
+    <title>My Works - Create Hub</title>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        font-family: Arial, "Noto Sans Bengali", sans-serif;
+
+        color: #eef2ff;
+
+        background:
+          radial-gradient(circle at 10% 10%, #263a68, transparent 30%),
+          radial-gradient(circle at 90% 20%, #59366a, transparent 30%), #0d1320;
+
+        min-height: 100vh;
+
+        overflow-x: hidden;
+
+        transition: 0.5s;
+      }
+
+      body.light {
+        color: #27324a;
+
+        background:
+          radial-gradient(circle at 10% 10%, #dff5ff, transparent 30%),
+          radial-gradient(circle at 90% 20%, #f5e3ff, transparent 30%), #f8fbff;
+      }
+
+      /* NAV */
+
+      nav {
+        width: 92%;
+
+        max-width: 1230px;
+
+        min-height: 60px;
+
+        margin: 20px auto;
+
+        padding: 13px 18px;
+
+        border-radius: 19px;
+
+        position: sticky;
+
+        top: 15px;
+
+        z-index: 100;
+
+        display: flex;
+
+        align-items: center;
+
+        justify-content: space-between;
+
+        background: rgba(20, 27, 43, 0.78);
+
+        backdrop-filter: blur(18px);
+
+        border: 1px solid rgba(255, 255, 255, 0.09);
+
+        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.22);
+      }
+
+      body.light nav {
+        background: rgba(255, 255, 255, 0.78);
+      }
+
+      /* LOGO */
+
+      .logo {
+        font-size: 22px;
+
+        font-weight: 800;
+
+        color: #9eafff;
+      }
+
+      body.light .logo {
+        color: #5263d6;
+      }
+
+      /* MENU */
+
+      .menu {
+        display: flex;
+
+        gap: 10px;
+
+        align-items: center;
+      }
+
+      .menu a {
+        color: #cbd3e8;
+
+        text-decoration: none;
+
+        font-weight: bold;
+
+        font-size: 14px;
+
+        padding: 9px 13px;
+
+        border-radius: 10px;
+
+        transition: 0.3s;
+      }
+
+      .menu a:hover {
+        background: rgba(255, 255, 255, 0.08);
+
+        transform: translateY(-2px);
+      }
+
+      body.light .menu a {
+        color: #59657b;
+      }
+
+      .theme {
+        border: none;
+
+        width: 82px;
+
+        height: 36px;
+
+        border-radius: 30px;
+
+        cursor: pointer;
+
+        color: white;
+
+        background: rgba(255, 255, 255, 0.1);
+
+        font-weight: bold;
+      }
+
+      body.light .theme {
+        color: #5263ce;
+
+        background: white;
+      }
+
+      /* HEADER */
+
+      .header {
+        text-align: center;
+
+        padding: 80px 20px 55px;
+      }
+
+      .header h1 {
+        font-size: clamp(40px, 7vw, 70px);
+
+        margin-bottom: 18px;
+
+        background: linear-gradient(90deg, #8fa2ff, #d28ce9, #6ed9bd, #8fa2ff);
+
+        background-size: 250%;
+
+        -webkit-background-clip: text;
+
+        background-clip: text;
+
+        color: transparent;
+
+        animation: gradient 5s linear infinite;
+      }
+
+      @keyframes gradient {
+        from {
+          background-position: 0%;
+        }
+
+        to {
+          background-position: 250%;
+        }
+      }
+
+      .header p {
+        color: #aeb8ca;
+
+        max-width: 650px;
+
+        margin: auto;
+
+        line-height: 1.8;
+      }
+
+      body.light .header p {
+        color: #707b8e;
+      }
+
+      /* WORKS */
+
+      .works {
+        width: 92%;
+
+        max-width: 1050px;
+
+        margin: 0 auto 80px;
+
+        display: grid;
+
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+
+        gap: 23px;
+      }
+
+      /* CARD */
+
+      .work-card {
+        padding: 27px;
+
+        border-radius: 24px;
+
+        background: rgba(255, 255, 255, 0.055);
+
+        border: 1px solid rgba(255, 255, 255, 0.08);
+
+        backdrop-filter: blur(15px);
+
+        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
+
+        transition: 0.4s;
+      }
+
+      .work-card:hover {
+        transform: translateY(-9px);
+
+        box-shadow: 0 20px 50px rgba(75, 90, 180, 0.22);
+      }
+
+      body.light .work-card {
+        background: rgba(255, 255, 255, 0.72);
+
+        border-color: rgba(255, 255, 255, 0.9);
+      }
+
+      .work-icon {
+        font-size: 43px;
+
+        margin-bottom: 16px;
+      }
+
+      .work-card h2 {
+        font-size: 21px;
+
+        margin-bottom: 10px;
+      }
+
+      .work-card p {
+        color: #aeb8ca;
+
+        font-size: 14px;
+
+        line-height: 1.8;
+
+        margin-bottom: 20px;
+      }
+
+      body.light .work-card p {
+        color: #707b90;
+      }
+
+      /* VIEW BUTTON */
+
+      .view-btn {
+        display: inline-block;
+
+        text-decoration: none;
+
+        padding: 11px 18px;
+
+        border-radius: 12px;
+
+        color: white;
+
+        font-weight: bold;
+
+        background: linear-gradient(135deg, #6175e8, #a765d9);
+
+        transition: 0.3s;
+      }
+
+      .view-btn:hover {
+        transform: translateY(-4px);
+
+        box-shadow: 0 10px 25px rgba(95, 110, 220, 0.25);
+      }
+
+      /* BACK */
+
+      .back {
+        text-align: center;
+
+        margin-bottom: 60px;
+      }
+
+      .back a {
+        text-decoration: none;
+
+        color: #9eafff;
+
+        font-weight: bold;
+      }
+
+      /* FOOTER */
+
+      footer {
+        text-align: center;
+
+        padding: 25px;
+
+        color: #8994aa;
+      }
+
+      /* MOBILE */
+
+      @media (max-width: 700px) {
+        nav {
+          width: 94%;
+
+          padding: 10px 12px;
+        }
+
+        .logo {
+          font-size: 18px;
+        }
+
+        .menu a {
+          display: none;
+        }
+
+        .theme {
+          width: 76px;
+
+          height: 34px;
+
+          font-size: 11px;
+        }
+
+        .header {
+          padding: 65px 18px 45px;
+        }
+
+        .works {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- NAV -->
+
+    <nav>
+      <div class="logo">Create Hub</div>
+
+      <div class="menu">
+        <a href="first.html"> Home </a>
+
+        <a href="first.html#services"> Services </a>
+
+        <a href="first.html#custom"> Customize </a>
+
+        <button
+          class="theme"
+          id="theme"
+          onclick="toggleTheme()"
+        >
+          ☀️ Day
+        </button>
+      </div>
+    </nav>
+
+    <!-- HEADER -->
+
+    <header class="header">
+      <h1>My Works</h1>
+
+      <p>
+        এখন পর্যন্ত তৈরি করা কিছু Website এখানে রাখা থাকবে। ভবিষ্যতে নতুন
+        Website তৈরি হলে এখানেই যোগ করা যাবে।
+      </p>
+    </header>
+
+    <!-- WORK LIST -->
+
+    <div class="works">
+      <!-- BIRTHDAY WEBSITE -->
+
+      <div class="work-card">
+        <div class="work-icon">🎂</div>
+
+        <h2>Birthday Wish Website</h2>
+
+        <p>
+          জন্মদিনের জন্য তৈরি করা একটি সুন্দর Digital Wish Website। এখানে
+          Birthday Message, Photo এবং Animation ব্যবহার করা হয়েছে।
+        </p>
+
+        <a
+          href="https://mehedyexe-hub.github.io/tanvirr/"
+          target="_blank"
+          class="view-btn"
+        >
+          Website দেখুন →
+        </a>
+      </div>
+
+      <!-- NEW WEBSITE TEMPLATE -->
+
+      <div class="work-card">
+        <div class="work-icon">✨</div>
+
+        <h2>নতুন Website</h2>
+
+        <p>ভবিষ্যতে তৈরি করা নতুন Website এখানে যোগ করা যাবে।</p>
+
+        <a
+          href="#"
+          class="view-btn"
+        >
+          শীঘ্রই আসছে
+        </a>
+      </div>
+    </div>
+
+    <!-- BACK -->
+
+    <div class="back">
+      <a href="first.html"> ← Create Hub-এ ফিরে যান </a>
+    </div>
+
+    <footer>Create Hub</footer>
+
+    <script>
+      function toggleTheme() {
+        document.body.classList.toggle("light");
+
+        const button = document.getElementById("theme");
+
+        if (document.body.classList.contains("light")) {
+          button.innerHTML = "🌙 Night";
+        } else {
+          button.innerHTML = "☀️ Day";
+        }
+      }
+    </script>
+  </body>
+</html>
