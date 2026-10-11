@@ -1489,7 +1489,7 @@ if (!window.favoriteShowcaseMediaReady) {
 
   musicVideo.addEventListener("error", () => {
     musicTimerStatus.textContent =
-      "Music video unavailable. Check photos/ruposh.mp4.";
+      "Music video unavailable. Check ruposh.mp4.";
   });
 })();
 
