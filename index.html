@@ -990,10 +990,10 @@
 
 <section id="customFavorites" class="custom-favorites">
 
-  <!-- Favorites main page -->
+  <!-- FAVORITES HOME -->
   <div id="favHome" class="fav-page active">
 
-    <button class="fav-main-back" type="button" data-favorites-exit>
+    <button type="button" class="fav-main-back" data-favorites-exit>
       ← Back to Explore World
     </button>
 
@@ -1003,55 +1003,55 @@
       <p>Little things that make the world feel softer.</p>
     </header>
 
-    <div class="fav-select-wrap">
-      <label for="favoriteSelect">Choose a favorite</label>
+    <div class="fav-selector">
+      <label for="favoriteSelect">Choose Your Favorite</label>
       <select id="favoriteSelect">
-        <option value="all">All Favorites</option>
-        <option value="naturePage">Nature &amp; Calm</option>
-        <option value="flowersPage">Flowers</option>
-        <option value="sleepPage">Sleeping</option>
-        <option value="musicPage">Music</option>
+        <option value="all">✦ All Favorites</option>
+        <option value="naturePage">🌿 Nature &amp; Calm</option>
+        <option value="flowersPage">🌼 Flowers</option>
+        <option value="sleepPage">🌙 Sleeping</option>
+        <option value="musicPage">🎧 Music — Ruposh</option>
       </select>
     </div>
 
     <div class="fav-grid">
 
-      <button class="fav-card nature-card" data-open="naturePage"
-              data-category="naturePage" type="button">
+      <button class="fav-card nature-card" type="button"
+              data-open="naturePage" data-category="naturePage">
         <span class="fav-icon">🌿</span>
         <h2>Nature &amp; Calm</h2>
-        <p>Quiet rivers, green forests and gentle breezes. A little space to breathe, relax and find peace.</p>
+        <p>Flowing rivers, green forests and peaceful skies. A quiet place to breathe and enjoy simple moments.</p>
         <span class="fav-link">Explore nature ↗</span>
       </button>
 
-      <button class="fav-card flower-card" data-open="flowersPage"
-              data-category="flowersPage" type="button">
+      <button class="fav-card flower-card" type="button"
+              data-open="flowersPage" data-category="flowersPage">
         <span class="fav-icon">🌼</span>
         <h2>Flowers</h2>
-        <p>Beautiful blossoms, delicate colours and the simple joy that makes an ordinary day special.</p>
+        <p>Beautiful blossoms, delicate colours and little details that make an ordinary day feel special.</p>
         <span class="fav-link">Discover flowers ↗</span>
       </button>
 
-      <button class="fav-card sleep-card" data-open="sleepPage"
-              data-category="sleepPage" type="button">
+      <button class="fav-card sleep-card" type="button"
+              data-open="sleepPage" data-category="sleepPage">
         <span class="fav-icon">🌙</span>
         <h2>Sleeping</h2>
-        <p>Peaceful nights, gentle snowfall and relaxing videos to help you slow down and unwind.</p>
+        <p>Peaceful night videos, gentle snowfall and a calm atmosphere for a relaxing break.</p>
         <span class="fav-link">Enter the night ↗</span>
       </button>
 
-      <button class="fav-card music-card" data-open="musicPage"
-              data-category="musicPage" type="button">
+      <button class="fav-card music-card" type="button"
+              data-open="musicPage" data-category="musicPage">
         <span class="fav-icon">🎧</span>
         <h2>Music</h2>
-        <p>Ruposh OST — an emotional melody, beautiful atmosphere and moments worth remembering.</p>
+        <p>Ruposh OST — an emotional melody and a memorable atmosphere. Take a moment and enjoy the music.</p>
         <span class="fav-link">Listen to music ↗</span>
       </button>
 
     </div>
   </div>
 
-  <!-- Nature page -->
+  <!-- NATURE PAGE -->
   <div id="naturePage" class="fav-page">
     <button class="fav-back" type="button" data-back>← Back to Favorites</button>
 
@@ -1059,18 +1059,13 @@
       <span class="detail-icon">🌿</span>
       <span class="detail-label">BREATHE · SLOW DOWN · RESET</span>
       <h2>Nature &amp; Calm</h2>
-
-      <p>Nature has a quiet way of making everything feel lighter. The sound of flowing water, the movement of leaves and the beauty of an open sky remind us to slow down and enjoy the present moment.</p>
-
-      <p>Take a deep breath. Let your thoughts settle. Sometimes, a little time surrounded by nature is all we need to feel refreshed again.</p>
-
-      <div class="nature-decoration" aria-hidden="true">
-        🌲　🍃　🏞️　🍃　🌲
-      </div>
+      <p>Nature has a gentle way of making everything feel lighter. The sound of flowing water, the movement of leaves and the beauty of an open sky remind us to slow down.</p>
+      <p>Take a deep breath, let your thoughts settle and enjoy the little things around you. Sometimes, a peaceful moment is all you need.</p>
+      <div class="nature-decoration" aria-hidden="true">🌲　🍃　🏞️　🍃　🌲</div>
     </article>
   </div>
 
-  <!-- Flowers page -->
+  <!-- FLOWERS PAGE -->
   <div id="flowersPage" class="fav-page">
     <button class="fav-back" type="button" data-back>← Back to Favorites</button>
 
@@ -1078,18 +1073,15 @@
       <span class="detail-icon">🌼</span>
       <span class="detail-label">A LITTLE BEAUTY IN EVERY BLOOM</span>
       <h2>The World of Flowers</h2>
-
-      <p>Every flower has its own beauty. Roses bring elegance, sunflowers carry warmth, and daisies remind us of life's simple joys.</p>
-
-      <p>Flowers add colour to ordinary days and can make someone smile without saying a word. Their beauty reminds us that the smallest things can create the sweetest memories.</p>
-
+      <p>Roses bring elegance, sunflowers carry warmth, and daisies remind us of life's simple joys. Every blossom has its own colours, character and beauty.</p>
+      <p>Flowers can brighten a room, bring a smile and turn an ordinary moment into a lovely memory. Sometimes, the smallest things are the most beautiful.</p>
       <div class="flower-gallery" aria-label="Flower decorations">
         <span>🌷</span><span>🌼</span><span>🌻</span><span>🌸</span><span>🌺</span>
       </div>
     </article>
   </div>
 
-  <!-- Sleeping page -->
+  <!-- SLEEPING PAGE -->
   <div id="sleepPage" class="fav-page">
     <button class="fav-back" type="button" data-back>← Back to Favorites</button>
 
@@ -1097,82 +1089,59 @@
       <span class="detail-icon">🌙</span>
       <span class="detail-label">SLOW EVENINGS · QUIET DREAMS</span>
       <h2>Sleeping &amp; Relaxation</h2>
-
-      <p>Dim the lights, take a breath and enjoy a quiet moment. Let these peaceful videos create a calm atmosphere while you relax.</p>
+      <p>Settle in, take a breath and enjoy a peaceful video. The soft snowfall and dark night theme create a calm little corner to relax.</p>
 
       <div class="sleep-video-frame">
         <video id="sleepVideo" controls playsinline preload="metadata">
-          <source src="photos/sleep.mp4" type="video/mp4">
-          Your browser does not support this video.
+          <source src="./photos/sleep.mp4" type="video/mp4">
+          Your browser does not support MP4 video.
         </video>
         <div id="sleepSnow" class="sleep-snow" aria-hidden="true"></div>
       </div>
 
-      <div class="sleep-controls">
-        <button id="sleepPrev" type="button">⏮ Previous</button>
-        <button id="sleepPlay" type="button">▶ Play</button>
-        <button id="sleepNext" type="button">Next ⏭</button>
-      </div>
-
       <p id="sleepStatus" class="media-status" aria-live="polite">
-        Your peaceful moment is ready.
+        Your peaceful videos are ready.
       </p>
     </article>
   </div>
 
-  <!-- Music page -->
+  <!-- MUSIC PAGE -->
   <div id="musicPage" class="fav-page">
     <button class="fav-back" type="button" data-back>← Back to Favorites</button>
 
     <article class="fav-detail music-detail">
-      <span class="detail-icon music-note">♫</span>
-      <span class="detail-label">YOUR MUSIC CORNER</span>
-      <h2>Ruposh — OST</h2>
+      <div class="music-heading">
+        <span class="music-disc">♫</span>
+        <span class="detail-label">YOUR PERSONAL MUSIC CORNER</span>
+        <h2>Ruposh <span>♡</span></h2>
+        <p>A melody that makes ordinary moments unforgettable.</p>
+      </div>
 
-      <p class="music-intro">
-        A memorable soundtrack with emotional vocals, a soulful melody
-        and a dramatic atmosphere. Enjoy the music and let the moment unfold.
-      </p>
+      <div class="music-bars" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span><span></span><span></span>
+        <span></span><span></span><span></span>
+      </div>
 
-      <div class="music-video">
+      <div class="music-video-frame">
         <video id="musicVideo" controls playsinline preload="metadata">
-          <source src="ruposh.mp4" type="video/mp4">
-          Your browser does not support this video.
+          <source src="ruposhs.mp4" type="video/mp4">
+          Your browser does not support MP4 video.
         </video>
       </div>
 
-      <div class="music-controls">
-        <button id="musicPlay" type="button">▶ Play / Resume</button>
-        <button id="musicPause" type="button">Ⅱ Pause</button>
-      </div>
-
-      <div class="music-timer">
-        <label for="musicTimer">Listening timer</label>
-        <select id="musicTimer">
-          <option value="">No timer</option>
-          <option value="300">5 minutes</option>
-          <option value="600">10 minutes</option>
-          <option value="900">15 minutes</option>
-          <option value="1800">30 minutes</option>
-        </select>
-      </div>
-
-      <p id="musicTimerStatus" class="media-status" aria-live="polite">
-        Ready to play Ruposh.
-      </p>
+     
 
       <div class="music-description">
-        <h3>About the music</h3>
-        <p>Ruposh is known for its expressive OST and memorable musical atmosphere. Use the player controls to listen, pause and resume whenever you like.</p>
+        <h3>Feel the Music</h3>
+        <p>Some melodies say what words cannot. Enjoy the emotional atmosphere, expressive music and beautiful moments of Ruposh.</p>
+        <p class="music-note">♫ Put on your headphones and enjoy the moment.</p>
       </div>
     </article>
   </div>
 
 </section>
 
-
-
-</section>
 <!-- ===== END FAVORITES SECTION ===== -->
 
     </section>
