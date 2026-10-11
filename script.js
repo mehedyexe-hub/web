@@ -1743,7 +1743,7 @@ loadYouTubeAPI();
     }).catch(() => {
       if (musicStatus) {
         musicStatus.textContent =
-          "Unable to play. Check photos/ruposh.mp4.";
+          "Unable to play. Check ruposh.mp4.";
       }
     });
 
@@ -1778,7 +1778,7 @@ loadYouTubeAPI();
   musicVideo?.addEventListener("error", () => {
     if (musicStatus) {
       musicStatus.textContent =
-        "Music unavailable. Check photos/ruposh.mp4.";
+        "Music unavailable. Check ruposh.mp4.";
     }
   });
 
