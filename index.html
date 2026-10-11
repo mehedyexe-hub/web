@@ -1,1686 +1,2217 @@
 <!doctype html>
-<html lang="bn">
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
-
     <meta
       name="viewport"
-      content="width=device-width, initial-scale=1.0"
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0"
     />
 
-    <title>Create Hub</title>
-
-    <style>
-      /* =========================
-   BASIC
-========================= */
-
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-      }
-
-      html {
-        scroll-behavior: smooth;
-      }
-
-      body {
-        font-family: Arial, "Noto Sans Bengali", sans-serif;
-
-        color: #edf1ff;
-
-        min-height: 100vh;
-
-        overflow-x: hidden;
-
-        background:
-          radial-gradient(circle at 10% 10%, #273d70 0%, transparent 30%),
-          radial-gradient(circle at 90% 20%, #5b396c 0%, transparent 30%),
-          radial-gradient(circle at 50% 90%, #23584e 0%, transparent 30%),
-          #0d1422;
-
-        transition:
-          background 0.6s ease,
-          color 0.6s ease;
-      }
-
-      /* =========================
-   LIGHT MODE
-========================= */
-
-      body.light {
-        color: #29344c;
-
-        background:
-          radial-gradient(circle at 10% 10%, #e1f5ff 0%, transparent 30%),
-          radial-gradient(circle at 90% 20%, #f5e5ff 0%, transparent 30%),
-          radial-gradient(circle at 50% 90%, #e2fff4 0%, transparent 30%),
-          #f8fbff;
-      }
-
-      /* =========================
-   BACKGROUND GLOW
-========================= */
-
-      .glow {
-        position: fixed;
-
-        border-radius: 50%;
-
-        filter: blur(8px);
-
-        opacity: 0.22;
-
-        pointer-events: none;
-
-        z-index: -2;
-
-        animation: floatingGlow 10s ease-in-out infinite;
-      }
-
-      .glow1 {
-        width: 210px;
-        height: 210px;
-
-        background: #667cff;
-
-        left: -90px;
-        top: 8%;
-      }
-
-      .glow2 {
-        width: 240px;
-        height: 240px;
-
-        background: #c45cdd;
-
-        right: -110px;
-        top: 42%;
-
-        animation-delay: 2s;
-      }
-
-      .glow3 {
-        width: 180px;
-        height: 180px;
-
-        background: #4bd1a8;
-
-        left: 35%;
-        bottom: -80px;
-
-        animation-delay: 4s;
-      }
-
-      @keyframes floatingGlow {
-        0%,
-        100% {
-          transform: translate(0, 0) scale(1);
-        }
-
-        50% {
-          transform: translate(25px, -25px) scale(1.08);
-        }
-      }
-
-      /* =========================
-   FLOATING PARTICLES
-========================= */
-
-      .particle {
-        position: fixed;
-
-        width: 5px;
-        height: 5px;
-
-        border-radius: 50%;
-
-        background: #aebaff;
-
-        opacity: 0;
-
-        pointer-events: none;
-
-        z-index: -1;
-
-        animation: particleUp 8s linear infinite;
-      }
-
-      .p1 {
-        left: 12%;
-        bottom: -10px;
-      }
-
-      .p2 {
-        left: 32%;
-        bottom: -10px;
-        animation-delay: 2s;
-      }
-
-      .p3 {
-        left: 58%;
-        bottom: -10px;
-        animation-delay: 4s;
-      }
-
-      .p4 {
-        left: 82%;
-        bottom: -10px;
-        animation-delay: 6s;
-      }
-
-      @keyframes particleUp {
-        0% {
-          transform: translateY(0) scale(0.5);
-
-          opacity: 0;
-        }
-
-        20% {
-          opacity: 0.6;
-        }
-
-        100% {
-          transform: translateY(-100vh) scale(1.2);
-
-          opacity: 0;
-        }
-      }
-
-      /* =========================
-   TOP BAR
-========================= */
-
-      nav {
-        width: 92%;
-
-        max-width: 1150px;
-
-        margin: 20px auto;
-
-        height: 64px;
-
-        padding: 8px 18px;
-
-        display: grid;
-
-        grid-template-columns:
-          1fr
-          auto
-          1fr;
-
-        align-items: center;
-
-        position: sticky;
-
-        top: 15px;
-
-        z-index: 500;
-
-        border-radius: 19px;
-
-        background: rgba(20, 27, 43, 0.72);
-
-        backdrop-filter: blur(18px);
-
-        border: 1px solid rgba(255, 255, 255, 0.09);
-
-        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2);
-      }
-
-      body.light nav {
-        background: rgba(255, 255, 255, 0.8);
-
-        border-color: rgba(255, 255, 255, 0.95);
-      }
-
-      /* =========================
-   PROFILE IMAGE
-========================= */
-
-      .profile-box {
-        width: 46px;
-
-        height: 46px;
-
-        border-radius: 50%;
-
-        padding: 2px;
-
-        background: linear-gradient(135deg, #7285ff, #ca68df, #65d6b2);
-
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
-
-        overflow: hidden;
-
-        animation: profileFloat 5s ease-in-out infinite;
-      }
-
-      .profile-box img {
-        width: 100%;
-
-        height: 100%;
-
-        display: block;
-
-        object-fit: cover;
-
-        object-position: center;
-
-        border-radius: 50%;
-
-        border: 2px solid rgba(255, 255, 255, 0.9);
-      }
-
-      @keyframes profileFloat {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-
-        50% {
-          transform: translateY(-4px);
-        }
-      }
-
-      /* =========================
-   LOGO
-========================= */
-
-      .logo {
-        justify-self: center;
-
-        font-size: 21px;
-
-        font-weight: 800;
-
-        letter-spacing: 0.5px;
-
-        background: linear-gradient(90deg, #91a4ff, #d38ce9, #6ed9bd);
-
-        -webkit-background-clip: text;
-
-        background-clip: text;
-
-        color: transparent;
-
-        white-space: nowrap;
-      }
-
-      /* =========================
-   NAV RIGHT
-========================= */
-
-      .nav-right {
-        justify-self: end;
-
-        display: flex;
-
-        align-items: center;
-
-        gap: 12px;
-      }
-
-      .nav-links {
-        display: flex;
-
-        gap: 15px;
-      }
-
-      .nav-links a {
-        text-decoration: none;
-
-        color: #c3cce0;
-
-        font-size: 13px;
-
-        font-weight: bold;
-
-        transition: 0.3s;
-      }
-
-      .nav-links a:hover {
-        color: #9eafff;
-
-        transform: translateY(-2px);
-      }
-
-      body.light .nav-links a {
-        color: #5d687e;
-      }
-
-      /* =========================
-   THEME BUTTON
-========================= */
-
-      .theme {
-        width: 78px;
-
-        height: 35px;
-
-        border: none;
-
-        border-radius: 30px;
-
-        cursor: pointer;
-
-        color: white;
-
-        background: rgba(255, 255, 255, 0.1);
-
-        font-weight: bold;
-
-        transition: 0.3s;
-      }
-
-      .theme:hover {
-        transform: scale(1.06);
-      }
-
-      body.light .theme {
-        color: #5264ce;
-
-        background: #ffffff;
-      }
-
-      /* =========================
-   HERO
-========================= */
-
-      .hero {
-        min-height: 82vh;
-
-        display: flex;
-
-        justify-content: center;
-
-        align-items: center;
-
-        text-align: center;
-
-        padding: 70px 20px;
-      }
-
-      .hero-content {
-        max-width: 820px;
-
-        animation: heroShow 1s ease;
-      }
-
-      .hero h1 {
-        font-size: clamp(43px, 8vw, 78px);
-
-        line-height: 1.05;
-
-        margin-bottom: 24px;
-
-        background: linear-gradient(90deg, #91a4ff, #d38ce9, #6ed9bd, #91a4ff);
-
-        background-size: 250% auto;
-
-        -webkit-background-clip: text;
-
-        background-clip: text;
-
-        color: transparent;
-
-        animation: gradientMove 5s linear infinite;
-      }
-
-      @keyframes gradientMove {
-        0% {
-          background-position: 0% center;
-        }
-
-        100% {
-          background-position: 250% center;
-        }
-      }
-
-      .hero p {
-        color: #b1bbcf;
-
-        font-size: 16px;
-
-        line-height: 1.9;
-
-        max-width: 700px;
-
-        margin: auto;
-      }
-
-      body.light .hero p {
-        color: #6e788b;
-      }
-
-      /* =========================
-   BUTTONS
-========================= */
-
-      .hero-buttons {
-        margin-top: 30px;
-      }
-
-      .btn {
-        display: inline-block;
-
-        padding: 14px 23px;
-
-        margin: 5px;
-
-        border-radius: 14px;
-
-        text-decoration: none;
-
-        font-weight: bold;
-
-        transition: 0.35s;
-
-        position: relative;
-
-        overflow: hidden;
-      }
-
-      .btn:hover {
-        transform: translateY(-5px);
-      }
-
-      .primary {
-        color: white;
-
-        background: linear-gradient(135deg, #6175e8, #a765d9);
-
-        box-shadow: 0 12px 30px rgba(90, 105, 220, 0.25);
-      }
-
-      .secondary {
-        color: #cbd3ff;
-
-        background: rgba(255, 255, 255, 0.06);
-
-        border: 1px solid rgba(255, 255, 255, 0.1);
-      }
-
-      body.light .secondary {
-        color: #5264ce;
-
-        background: white;
-      }
-
-      @keyframes heroShow {
-        from {
-          opacity: 0;
-
-          transform: translateY(30px);
-        }
-
-        to {
-          opacity: 1;
-
-          transform: translateY(0);
-        }
-      }
-
-      /* =========================
-   SECTION
-========================= */
-
-      section {
-        width: 92%;
-
-        max-width: 1150px;
-
-        margin: 0 auto 90px;
-      }
-
-      .section-title {
-        text-align: center;
-
-        margin-bottom: 40px;
-      }
-
-      .section-title h2 {
-        font-size: 34px;
-
-        margin-bottom: 10px;
-      }
-
-      .section-title p {
-        color: #aeb8ca;
-
-        line-height: 1.7;
-      }
-
-      body.light .section-title p {
-        color: #707b8e;
-      }
-
-      /* =========================
-   SERVICE GRID
-========================= */
-
-      .services {
-        display: grid;
-
-        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-
-        gap: 22px;
-      }
-
-      /* =========================
-   CARD
-========================= */
-
-      .card {
-        padding: 27px;
-
-        border-radius: 23px;
-
-        background: rgba(255, 255, 255, 0.055);
-
-        backdrop-filter: blur(15px);
-
-        border: 1px solid rgba(255, 255, 255, 0.08);
-
-        box-shadow: 0 15px 40px rgba(0, 0, 0, 0.18);
-
-        transition: 0.45s;
-
-        position: relative;
-
-        overflow: hidden;
-      }
-
-      .card:hover {
-        transform: translateY(-8px);
-
-        border-color: rgba(155, 170, 255, 0.35);
-
-        box-shadow: 0 20px 50px rgba(65, 80, 160, 0.2);
-      }
-
-      body.light .card {
-        background: rgba(255, 255, 255, 0.74);
-
-        border-color: rgba(255, 255, 255, 0.9);
-      }
-
-      .icon {
-        font-size: 40px;
-
-        display: inline-block;
-
-        margin-bottom: 15px;
-
-        animation: iconFloat 4s ease-in-out infinite;
-      }
-
-      @keyframes iconFloat {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
-
-        50% {
-          transform: translateY(-5px);
-        }
-      }
-
-      .card h3 {
-        font-size: 20px;
-
-        margin-bottom: 10px;
-      }
-
-      .card p {
-        color: #adb8cc;
-
-        font-size: 14px;
-
-        line-height: 1.8;
-      }
-
-      body.light .card p {
-        color: #707b90;
-      }
-
-      /* =========================
-   INFO BUTTON
-========================= */
-
-      .info-btn {
-        margin-top: 17px;
-
-        padding: 10px 16px;
-
-        border: none;
-
-        border-radius: 12px;
-
-        cursor: pointer;
-
-        color: #dbe1ff;
-
-        background: rgba(110, 125, 230, 0.18);
-
-        border: 1px solid rgba(150, 165, 255, 0.15);
-
-        font-weight: bold;
-
-        transition: 0.3s;
-      }
-
-      .info-btn:hover {
-        transform: translateY(-3px);
-
-        background: rgba(110, 125, 230, 0.28);
-      }
-
-      body.light .info-btn {
-        color: #5263ce;
-
-        background: #eef0ff;
-      }
-
-      /* =========================
-   DETAILS
-========================= */
-
-      .details {
-        max-height: 0;
-
-        overflow: hidden;
-
-        opacity: 0;
-
-        transition: 0.55s ease;
-      }
-
-      .details.open {
-        max-height: 260px;
-
-        opacity: 1;
-
-        margin-top: 16px;
-      }
-
-      .details p {
-        font-size: 13px;
-
-        line-height: 1.9;
-      }
-
-      /* =========================
-   CUSTOMIZE
-========================= */
-
-      .custom {
-        display: grid;
-
-        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-
-        gap: 16px;
-      }
-
-      .custom-item {
-        padding: 20px;
-
-        border-radius: 18px;
-
-        background: rgba(255, 255, 255, 0.055);
-
-        border: 1px solid rgba(255, 255, 255, 0.08);
-
-        transition: 0.35s;
-      }
-
-      .custom-item:hover {
-        transform: translateY(-6px);
-      }
-
-      body.light .custom-item {
-        background: rgba(255, 255, 255, 0.74);
-      }
-
-      .custom-item strong {
-        display: block;
-
-        color: #9cafff;
-
-        margin-bottom: 8px;
-      }
-
-      body.light .custom-item strong {
-        color: #5263ce;
-      }
-
-      .custom-item span {
-        color: #aeb8ca;
-
-        font-size: 13px;
-
-        line-height: 1.7;
-      }
-
-      body.light .custom-item span {
-        color: #737e92;
-      }
-
-      /* =========================
-   COUNTDOWN
-========================= */
-
-      .countdown-box {
-        text-align: center;
-
-        padding: 38px 20px;
-
-        border-radius: 27px;
-
-        background: rgba(255, 255, 255, 0.055);
-
-        border: 1px solid rgba(255, 255, 255, 0.08);
-
-        box-shadow: 0 15px 45px rgba(0, 0, 0, 0.12);
-      }
-
-      body.light .countdown-box {
-        background: rgba(255, 255, 255, 0.74);
-      }
-
-      .countdown-box h3 {
-        font-size: 22px;
-
-        margin-bottom: 10px;
-      }
-
-      .countdown-box > p {
-        color: #aeb8ca;
-
-        font-size: 14px;
-
-        line-height: 1.8;
-      }
-
-      body.light .countdown-box > p {
-        color: #707b8e;
-      }
-
-      .countdown {
-        display: grid;
-
-        grid-template-columns: repeat(4, 1fr);
-
-        gap: 15px;
-
-        max-width: 680px;
-
-        margin: 28px auto 0;
-      }
-
-      .time {
-        padding: 21px 10px;
-
-        border-radius: 18px;
-
-        background: rgba(255, 255, 255, 0.06);
-
-        border: 1px solid rgba(255, 255, 255, 0.08);
-
-        transition: 0.35s;
-      }
-
-      .time:hover {
-        transform: translateY(-5px);
-      }
-
-      body.light .time {
-        background: white;
-      }
-
-      .time strong {
-        display: block;
-
-        font-size: 31px;
-
-        color: #9eafff;
-      }
-
-      .time span {
-        color: #aeb8ca;
-
-        font-size: 12px;
-      }
-
-      body.light .time span {
-        color: #737e92;
-      }
-
-      /* =========================
-   CONTACT
-========================= */
-
-      .contact {
-        text-align: center;
-
-        padding: 55px 20px;
-
-        border-radius: 30px;
-
-        background: linear-gradient(
-          135deg,
-          rgba(58, 75, 120, 0.55),
-          rgba(91, 56, 105, 0.55)
-        );
-
-        border: 1px solid rgba(255, 255, 255, 0.08);
-      }
-
-      body.light .contact {
-        background: linear-gradient(135deg, #dceaff, #f5e1ff);
-      }
-
-      .contact h2 {
-        font-size: 34px;
-
-        margin-bottom: 12px;
-      }
-
-      .contact p {
-        color: #b6bfd2;
-
-        margin-bottom: 22px;
-
-        line-height: 1.8;
-      }
-
-      body.light .contact p {
-        color: #707a8d;
-      }
-
-      .socials {
-        display: flex;
-
-        justify-content: center;
-
-        flex-wrap: wrap;
-
-        gap: 12px;
-
-        margin-top: 20px;
-      }
-
-      .social {
-        text-decoration: none;
-
-        padding: 11px 20px;
-
-        border-radius: 13px;
-
-        color: #d1d8ff;
-
-        background: rgba(255, 255, 255, 0.07);
-
-        border: 1px solid rgba(255, 255, 255, 0.1);
-
-        transition: 0.35s;
-      }
-
-      .social:hover {
-        transform: translateY(-4px) scale(1.02);
-      }
-
-      body.light .social {
-        color: #5263ce;
-
-        background: white;
-      }
-
-      /* =========================
-   FOOTER
-========================= */
-
-      footer {
-        text-align: center;
-
-        padding: 30px;
-
-        color: #8994aa;
-
-        font-size: 13px;
-      }
-
-      /* =========================
-   MOBILE
-========================= */
-
-      @media (max-width: 700px) {
-        nav {
-          width: 94%;
-
-          height: 58px;
-
-          padding: 7px 9px;
-        }
-
-        .profile-box {
-          width: 42px;
-
-          height: 42px;
-        }
-
-        .logo {
-          font-size: 18px;
-        }
-
-        .nav-links {
-          display: none;
-        }
-
-        .nav-right {
-          gap: 0;
-        }
-
-        .theme {
-          width: 76px;
-
-          height: 34px;
-
-          font-size: 11px;
-        }
-
-        .hero {
-          min-height: 78vh;
-
-          padding: 55px 16px 45px;
-        }
-
-        .hero h1 {
-          font-size: clamp(38px, 10vw, 52px);
-        }
-
-        .hero p {
-          font-size: 14px;
-        }
-
-        .btn {
-          display: block;
-
-          width: min(90%, 300px);
-
-          margin: 7px auto;
-        }
-
-        section {
-          width: 92%;
-
-          margin-bottom: 70px;
-        }
-
-        .section-title h2 {
-          font-size: 27px;
-        }
-
-        .services {
-          grid-template-columns: 1fr;
-        }
-
-        .custom {
-          grid-template-columns: 1fr;
-        }
-
-        .countdown {
-          grid-template-columns: repeat(2, 1fr);
-        }
-
-        .time strong {
-          font-size: 27px;
-        }
-
-        .contact {
-          padding: 45px 18px;
-        }
-
-        .contact h2 {
-          font-size: 27px;
-        }
-      }
-    </style>
+    <title>Lamiya's Birthday</title>
+
+    <link
+      rel="stylesheet"
+      href="style.css"
+    />
   </head>
 
+<!-- Falling confetti layer -->
+<div id="confettiContainer" aria-hidden="true"></div>
+
   <body>
-    <!-- Background -->
+    <!-- =========================================================
+     GLOBAL FLOATING DECORATIONS
+========================================================= -->
 
-    <div class="glow glow1"></div>
-    <div class="glow glow2"></div>
-    <div class="glow glow3"></div>
+    <div class="ambient">
+      <span class="ambient-item a1">🌸</span>
+      <span class="ambient-item a2">🦋</span>
+      <span class="ambient-item a3">🍃</span>
+      <span class="ambient-item a4">✨</span>
+      <span class="ambient-item a5">🦢</span>
+      <span class="ambient-item a6">🌷</span>
+      <span class="ambient-item a7">🪻</span>
+      <span class="ambient-item a8">🕊️</span>
+      <span class="ambient-item a9">💗</span>
+      <span class="ambient-item a10">🦢</span>
+    </div>
 
-    <div class="particle p1"></div>
-    <div class="particle p2"></div>
-    <div class="particle p3"></div>
-    <div class="particle p4"></div>
+    <!-- =========================================================
+     COUNTDOWN PAGE
+========================================================= -->
 
-    <!-- =========================
-     TOP NAVIGATION
-========================= -->
+    <section
+      id="countdownPage"
+      class="screen countdown-screen active"
+    >
+      <div class="countdown-background">
+        <div class="soft-orb orb-one"></div>
+        <div class="soft-orb orb-two"></div>
+        <div class="soft-orb orb-three"></div>
 
-    <nav>
-      <!-- YOUR PHOTO -->
+        <span class="count-star s1">✦</span>
+        <span class="count-star s2">✧</span>
+        <span class="count-star s3">✦</span>
+        <span class="count-star s4">⋆</span>
 
-      <div>
-        <div class="profile-box">
+        <!-- RIGHT TO LEFT -->
+        <span class="moving-bird bird-one">🐉</span>
+        <span class="moving-bird bird-two">🕊️</span>
+
+        <span class="moving-butterfly butterfly-one">🦋</span>
+        <span class="moving-butterfly butterfly-two">🦋</span>
+
+        <div class="tiny-cloud cloud-one"></div>
+        <div class="tiny-cloud cloud-two"></div>
+      </div>
+
+      <div class="countdown-content">
+        <div class="countdown-photo-wrap">
+          <div class="photo-glow"></div>
+
           <img
-            src="mehedy.jpg"
-            alt="Mehedy"
+            src="photos/lamiya.jpg"
+            alt="Butterfly"
+            class="countdown-photo"
           />
         </div>
-      </div>
 
-      <!-- WEBSITE NAME -->
+        <p class="small-label">✨ A little moment is waiting ✨</p>
 
-      <div class="logo">Create Hub</div>
+        <h1 class="countdown-title">Something Special</h1>
 
-      <!-- RIGHT SIDE -->
-
-      <div class="nav-right">
-        <div class="nav-links">
-          <a href="#services"> Services </a>
-
-          <a href="#custom"> Customize </a>
-
-          <a href="#contact"> Contact </a>
-        </div>
-
-        <button
-          class="theme"
-          id="theme"
-          onclick="toggleTheme()"
-        >
-          ☀️ Day
-        </button>
-      </div>
-    </nav>
-
-    <!-- =========================
-     HERO
-========================= -->
-
-    <header class="hero">
-      <div class="hero-content">
-        <h1>
-          আপনার ভাবনা,
-          <br />
-          আমার ওয়েবসাইট
-        </h1>
-
-        <p>
-          Birthday Website, Digital Gift, Sorry Letter, Love Letter, Surprise
-          Message, Event Invitation এবং আরও বিভিন্ন ধরনের ছোট ও সুন্দর ওয়েবসাইট
-          তৈরি করা যায়।
+        <p class="countdown-subtitle">
+          The celebration will appear when the countdown reaches zero.
         </p>
 
-        <div class="hero-buttons">
+        <div class="countdown-box">
+          <div class="time-card">
+            <span id="days">00</span>
+            <small>Days</small>
+          </div>
+
+          <div class="time-card">
+            <span id="hours">00</span>
+            <small>Hours</small>
+          </div>
+
+          <div class="time-card">
+            <span id="minutes">00</span>
+            <small>Minutes</small>
+          </div>
+
+          <div class="time-card">
+            <span id="seconds">00</span>
+            <small>Seconds</small>
+          </div>
+        </div>
+
+        <div class="social-area">
           <a
-            href="#services"
-            class="btn primary"
+            id="facebookLink"
+            href="#"
+            target="_blank"
+            class="social-button facebook"
           >
-            Services দেখুন
+            Facebook
           </a>
 
           <a
-            href="works.html"
-            class="btn secondary"
+            id="instagramLink"
+            href="#"
+            target="_blank"
+            class="social-button instagram"
           >
-            আমি যা বানিয়েছি
+            Instagram
           </a>
         </div>
+
+        <p class="time-note">
+          🌷 The page will automatically open after the selected time.
+        </p>
       </div>
+    </section>
+
+    <!-- =========================================================
+     MAIN BIRTHDAY PAGE
+========================================================= -->
+
+    <section
+      id="birthdayPage"
+      class="screen birthday-screen"
+    >
+      <div class="birthday-background">
+        <div class="soft-orb orb-four"></div>
+        <div class="soft-orb orb-five"></div>
+
+        <span class="birthday-float bf1">🌸</span>
+        <span class="birthday-float bf2">🦋</span>
+        <span class="birthday-float bf3">🍃</span>
+        <span class="birthday-float bf4">✨</span>
+        <span class="birthday-float bf5">🌷</span>
+        <span class="birthday-float bf6">🕊️</span>
+
+        <!-- RIGHT TO LEFT -->
+        <span class="birthday-bird bb1">🐦</span>
+        <span class="birthday-bird bb2">🕊️</span>
+
+        <div class="birthday-cloud bc1"></div>
+        <div class="birthday-cloud bc2"></div>
+      </div>
+
+      <div class="birthday-content">
+        <!-- MAIN IMAGE -->
+
+        <div class="main-photo-wrapper">
+          <div class="main-photo-ring ring-one"></div>
+          <div class="main-photo-ring ring-two"></div>
+
+          <img
+            src="photos/lamiya.jpg"
+            alt="Lamiya"
+            class="main-photo"
+          />
+
+          <span class="photo-spark spark-one">✦</span>
+          <span class="photo-spark spark-two">✧</span>
+        </div>
+
+        <p class="birthday-small">🌷 Today is a beautiful day 🌷</p>
+
+        <h1 class="happy-title">Happy Birthday</h1>
+
+        <h2 class="name-title">Lamiya 🐥</h2>
+
+        <p class="birthday-wish">
+          Wishing you a beautiful year filled with happiness, good memories,
+          peaceful moments, success, and lots of reasons to smile. ✨
+        </p>
+
+        <!-- =================================================
+             CSS CAKE
+        ================================================= -->
+<!-- Celebration Confetti -->
+<div class="celebration-confetti" aria-hidden="true">
+    <span>🎊</span>
+    <span>🎉</span>
+    <span>💜</span>
+    <span>💗</span>
+    <span>💙</span>
+    <span>💚</span>
+    <span>✨</span>
+    <span>🎊</span>
+    <span>🎉</span>
+    <span>💖</span>
+    <span>⭐</span>
+    <span>🎊</span>
+    <span>💜</span>
+    <span>💙</span>
+    <span>🎉</span>
+    <span>✨</span>
+    <span>💗</span>
+    <span>🎊</span>
+    <span>🎉</span>
+    <span>💛</span>
+    <span>💙</span>
+</div>
+        <div class="cake-area">
+          <div class="cake-plate"></div>
+
+          <div
+            id="cake"
+            class="cake"
+          >
+            <div class="cake-top">
+              <div class="cream cream-one"></div>
+              <div class="cream cream-two"></div>
+              <div class="cream cream-three"></div>
+
+              <div class="candle candle1">
+                <div class="flame"></div>
+              </div>
+
+              <div class="candle candle2">
+                <div class="flame"></div>
+              </div>
+
+              <div class="candle candle3">
+                <div class="flame"></div>
+              </div>
+
+              <div class="candle candle4">
+                <div class="flame"></div>
+              </div>
+
+              <div class="candle candle5">
+                <div class="flame"></div>
+              </div>
+            </div>
+
+            <div class="cake-body">
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+
+            <div class="cake-bottom"></div>
+          </div>
+        </div>
+
+        <p
+          id="celebrateMessage"
+          class="celebrate-message"
+        >
+          Make a wish and celebrate the moment! ✨
+        </p>
+
+        <div class="main-buttons">
+          <button
+            id="celebrateButton"
+            class="main-button primary"
+          >
+            🎉 Celebrate
+          </button>
+        </div>
+
+        <!-- Hidden until Celebrate -->
+
+        <div
+          id="afterCelebrate"
+          class="after-celebrate"
+        >
+          <p>🎊 The celebration has begun!</p>
+
+          <div class="after-buttons">
+            <button
+              id="wishButton"
+              class="main-button wish-button"
+            >
+              💌 Wish Letter
+            </button>
+            <button
+              id="exploreButton"
+              class="main-button explore-button"
+            >
+              🌎 Explore World
+            </button>
+
+            <button
+              id="resetButton"
+              class="main-button secondary"
+            >
+              🔄 Reset
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div
+        id="confetti"
+        class="confetti-container"
+      ></div>
+    </section>
+
+    <!-- =========================================================
+     EXPLORE WORLD
+========================================================= -->
+
+    <section
+      id="explorePage"
+      class="screen explore-screen"
+    >
+      <div class="explore-nature">
+        <div class="moon">🌙</div>
+
+        <div class="nature-cloud nc1"></div>
+        <div class="nature-cloud nc2"></div>
+
+        <!-- RIGHT TO LEFT -->
+        <span class="nature-bird nb1">🐦</span>
+        <span class="nature-bird nb2">🕊️</span>
+
+        <span class="nature-butterfly nbut1">🦋</span>
+        <span class="nature-butterfly nbut2">🦋</span>
+
+        <span class="bee">🐝</span>
+        <span class="dragon">🐲</span>
+        <span class="spider">👾</span>
+        <span class="balloon">🎈</span>
+
+        <div class="mountains"></div>
+
+        <div class="river">
+          <span>🌊</span>
+          <span>🌊</span>
+          <span>🌊</span>
+        </div>
+      </div>
+
+      <div class="page-content explore-content">
+        <button
+          class="back-button"
+          data-back
+        >
+          ← Back
+        </button>
+
+        <h1 class="page-title">🌎 Explore World</h1>
+
+        <p class="page-intro">
+          A small collection of cute, peaceful and fun corners. ✨
+        </p>
+
+        <div class="explore-grid">
+          <button
+            class="explore-card"
+            data-page="aboutPage"
+          >
+            <span>🌸</span>
+            <strong>About</strong>
+            <small>A little introduction</small>
+          </button>
+
+          <button
+            class="explore-card"
+            data-page="favoritesPage"
+          >
+            <span>💗</span>
+            <strong>Favorites</strong>
+            <small>Things worth remembering</small>
+          </button>
+
+          <button
+            class="explore-card"
+            data-page="hobbiesPage"
+          >
+            <span>🎨</span>
+            <strong>Hobbies</strong>
+            <small>Fun things to enjoy</small>
+          </button>
+
+          <button
+            class="explore-card"
+            data-page="memoriesPage"
+          >
+            <span>📸</span>
+            <strong>Memories</strong>
+            <small>Little moments</small>
+          </button>
+
+          <button
+            class="explore-card"
+            data-page="musicPage"
+          >
+            <span>🎵</span>
+            <strong>Music</strong>
+            <small>Sounds & vibes</small>
+          </button>
+
+          <button
+            class="explore-card"
+            data-page="flowersPage"
+          >
+            <span>💐</span>
+            <strong>Flowers</strong>
+            <small>Soft & colorful</small>
+          </button>
+
+          <button
+            class="explore-card"
+            data-page="funPage"
+          >
+            <span>😂</span>
+            <strong>Fun Corner</strong>
+            <small>A little laugh</small>
+          </button>
+
+          <button
+            class="explore-card"
+            data-page="peacefulPage"
+          >
+            <span>🦢</span>
+            <strong>Peaceful Place</strong>
+            <small>Calm little space</small>
+          </button>
+
+          <button
+            class="explore-card"
+            data-page="icecreamPage"
+          >
+            <span>🍦</span>
+            <strong>Ice Cream</strong>
+            <small>Sweet favorites</small>
+          </button>
+
+          <button
+            class="explore-card"
+            data-page="wishPage"
+          >
+            <span>💌</span>
+            <strong>Wish Letter</strong>
+            <small>A special message</small>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =====================================================
+     ABOUT PAGE
+     ⭐ ONLY ABOUT BUTTON CUSTOMIZATION AREA
+===================================================== -->
+
+    <section
+      id="aboutPage"
+      class="screen inner-screen about-screen"
+
+    <div class="about-bg">
+         <button
+          class="back-button"
+          data-back
+        >
+          ← Back
+        </button>
+
+        <span class="about-orb orb-one"></span>
+        <span class="about-orb orb-two"></span>
+        <span class="about-orb orb-three"></span>
+
+        <span class="about-star star-one">✦</span>
+        <span class="about-star star-two">✧</span>
+        <span class="about-star star-three">✦</span>
+
+        <span class="about-particle particle-one"></span>
+        <span class="about-particle particle-two"></span>
+        <span class="about-particle particle-three"></span>
+
+   
+
+
+    <!-- Main Content -->
+    <div class="about-content">
+
+
+        <!-- =========================
+             TITLE
+        ========================== -->
+
+        <div class="about-title">
+
+            <span class="about-small-title">
+               
+            </span>
+
+            <h1>
+                Her <span>World</span>
+            </h1>
+
+            <p>
+                Little things, beautiful moments
+                and a glimpse of who she is.
+            </p>
+
+        </div>
+
+
+
+        <!-- =========================
+             PROFILE
+        ========================== -->
+
+        <div class="about-profile">
+
+
+            <!-- PHOTO -->
+
+            <div class="about-photo-area">
+
+                <div class="photo-glow"></div>
+
+                <div class="photo-orbit orbit-one"></div>
+                <div class="photo-orbit orbit-two"></div>
+
+                <div class="about-photo">
+
+                    <img
+                        src="photos/lamiya.jpg"
+                        alt="Lamiya Akter"
+                    >
+
+                </div>
+
+                <span class="about-butterfly butterfly-one">
+                    🦋
+                </span>
+
+                <span class="about-butterfly butterfly-two">
+                    🦋
+                </span>
+
+                <span class="about-sparkle sparkle-one">
+                    ✦
+                </span>
+
+                <span class="about-sparkle sparkle-two">
+                    ✧
+                </span>
+
+            </div>
+
+
+
+            <!-- INTRO -->
+
+            <div class="about-intro">
+
+                <span class="intro-label">
+                    HELLO, I'M
+                </span>
+
+                <h2>
+                    Lamiya Akter
+                </h2>
+
+                <p>
+               Like a dragon fruit — quiet, different, and easy to overlook. Those who understand its value appreciate it; those who don’t simply never see what makes it special.🌿🐉🥭
+                </p>
+
+
+                <!-- BASIC INFO -->
+
+                <div class="about-info">
+
+
+                    <div class="info-item">
+
+                        <span>🎂</span>
+
+                        <div>
+                            <small>Birthday</small>
+                            <strong>15 October</strong>
+                        </div>
+
+                    </div>
+
+
+                    <div class="info-item">
+
+                        <span>🇧🇩</span>
+
+                        <div>
+                            <small>Nationality</small>
+                            <strong>Bangladeshi</strong>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             PERSONALITY
+        ========================== -->
+
+        <div class="about-block">
+
+
+            <div class="block-heading">
+
+                <span></span>
+
+                <div>
+                    <small>HER PERSONALITY</small>
+
+                    <h2>
+                        A Little About Her ✨
+                    </h2>
+                </div>
+
+            </div>
+
+
+            <p class="about-description">
+
+                She enjoys simple moments, meaningful
+                connections and discovering something new.
+                Her world is filled with music, journeys,
+                people, movies and little moments worth
+                remembering.
+
+            </p>
+
+
+            <!-- 3D CARDS -->
+
+            <div class="personality-cards">
+
+
+                <div class="personality-card">
+
+                    <span class="card-number">
+                        
+                    </span>
+
+                    <div class="personality-icon">
+                        🌷
+                    </div>
+
+                    <h3>
+                        Friendly
+                    </h3>
+
+                    <p>
+                        Loves connecting with people
+                        and sharing good moments.
+                    </p>
+
+                </div>
+
+
+                <div class="personality-card">
+
+                    <span class="card-number">
+                        
+                    </span>
+
+                    <div class="personality-icon">
+                        🌿
+                    </div>
+
+                    <h3>
+                        Peaceful
+                    </h3>
+
+                    <p>
+                        Finds beauty in simple and
+                        peaceful moments.
+                    </p>
+
+                </div>
+
+
+                <div class="personality-card">
+
+                    <span class="card-number">
+                        
+                    </span>
+
+                    <div class="personality-icon">
+                        ✨
+                    </div>
+
+                    <h3>
+                        Curious
+                    </h3>
+
+                    <p>
+                        Loves discovering new things,
+                        places and experiences.
+                    </p>
+
+                </div>
+
+
+                <div class="personality-card">
+
+                    <span class="card-number">
+                        
+                    </span>
+
+                    <div class="personality-icon">
+                        🤍
+                    </div>
+
+                    <h3>
+                        Positive
+                    </h3>
+
+                    <p>
+                        Appreciates the little things
+                        that make life beautiful.
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             INTERESTS
+        ========================== -->
+
+        <div class="about-block">
+
+
+            <div class="block-heading">
+
+                <span></span>
+
+                <div>
+                    <small>THINGS SHE LOVES</small>
+
+                    <h2>
+                        Her Interests 🌸
+                    </h2>
+                </div>
+
+            </div>
+
+
+            <div class="interest-cards">
+
+
+                <div class="interest-card">
+                    <span>✈️</span>
+                    <strong>Travelling</strong>
+                    <small>Exploring new places</small>
+                </div>
+
+
+                <div class="interest-card">
+                    <span>🌐</span>
+                    <strong>Internet Browsing</strong>
+                    <small>Discovering new things</small>
+                </div>
+
+
+                <div class="interest-card">
+                    <span>🤝</span>
+                    <strong>Meeting People</strong>
+                    <small>New people & connections</small>
+                </div>
+
+
+                <div class="interest-card">
+                    <span>🎬</span>
+                    <strong>Movies</strong>
+                    <small>Good stories & moments</small>
+                </div>
+
+
+                <div class="interest-card">
+                    <span>🎵</span>
+                    <strong>Music</strong>
+                    <small>Good songs & good vibes</small>
+                </div>
+
+
+                <div class="interest-card">
+                    <span>🌙💤</span>
+                    <strong>Dreamy Sleep</strong>
+                    <small>🌙 Sleep is her little escape.</small>
+                </div>
+
+
+                <div class="interest-card">
+                    <span>🐰</span>
+                    <strong>reels</strong>
+                    <small>just scrolling</small>
+                </div>
+
+
+                <div class="interest-card">
+                    <span>🌿</span>
+                    <strong>Nature Lover</strong>
+                    <small>Peaceful places & fresh air</small>
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             QUOTE
+        ========================== -->
+
+        <div class="about-quote">
+
+            <span class="quote-mark">
+                “
+            </span>
+
+            <p>
+                Quiet moments, genuine smiles, beautiful places, and memories that stay.
+            </p>
+
+            <small>
+                — A little reminder to enjoy life 🌿
+            </small>
+
+        </div>
+
+
+
+        <!-- =========================
+             SOCIAL MEDIA
+        ========================== -->
+
+        <div class="about-block social-block">
+
+
+            <div class="block-heading center-heading">
+
+                <span></span>
+
+                <div>
+                    <small>CONNECT WITH HER</small>
+
+                    <h2>
+                        Find Her Online 💜
+                    </h2>
+                </div>
+
+            </div>
+
+
+            <p class="social-description">
+                Want to see more of her world?
+                Find her on social media.
+            </p>
+
+
+            <div class="social-cards">
+
+
+                <!-- Instagram -->
+
+                <a
+                    href="https://www.instagram.com/dragonfruite1.0/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="social-card instagram-card"
+                >
+
+                    <div class="social-icon">
+                        ◎
+                    </div>
+
+                    <div class="social-details">
+
+                        <strong>
+                            Instagram
+                        </strong>
+
+                        
+
+                    </div>
+
+                    <span class="social-arrow">
+                        ↗
+                    </span>
+
+                </a>
+
+
+
+                <!-- Facebook -->
+
+                <a
+                    href="https://www.facebook.com/profile.php?id=61583851411285"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="social-card facebook-card"
+                >
+
+                    <div class="social-icon facebook-icon">
+                        f
+                    </div>
+
+                    <div class="social-details">
+
+                        <strong>
+                            Facebook
+                        </strong>
+
+                       
+                    </div>
+
+                    <span class="social-arrow">
+                        ↗
+                    </span>
+
+                </a>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- =========================
+             END
+        ========================== -->
+
+        <div class="about-ending">
+
+            <div></div>
+
+            <p>
+                This is just a little glimpse
+                into her beautiful world. 💜
+            </p>
+
+            <span>
+                ✦ &nbsp; 🦋 &nbsp; ✦ &nbsp; 🌸 &nbsp; ✦
+            </span>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+    <!-- =========================================================
+     FAVORITES
+========================================================= -->
+
+    <section
+      id="favoritesPage"
+      class="screen inner-screen favorites-screen"
+    >
+      <div class="page-content">
+        <button
+          class="back-button"
+          data-back
+        >
+          ← Back
+        </button>
+
+
+
+<section id="customFavorites" class="custom-favorites">
+
+  <!-- Favorites main page -->
+  <div id="favHome" class="fav-page active">
+
+    <button class="fav-main-back" type="button" data-favorites-exit>
+      ← Back to Explore World
+    </button>
+
+    <header class="fav-header">
+      <span class="fav-eyebrow">A LITTLE WORLD OF PEACE</span>
+      <h1>Favorites <span>♡</span></h1>
+      <p>Little things that make the world feel softer.</p>
     </header>
 
-    <!-- =========================
-     SERVICES
-========================= -->
+    <div class="fav-select-wrap">
+      <label for="favoriteSelect">Choose a favorite</label>
+      <select id="favoriteSelect">
+        <option value="all">All Favorites</option>
+        <option value="naturePage">Nature &amp; Calm</option>
+        <option value="flowersPage">Flowers</option>
+        <option value="sleepPage">Sleeping</option>
+        <option value="musicPage">Music</option>
+      </select>
+    </div>
 
-    <section id="services">
-      <div class="section-title">
-        <h2>Services</h2>
+    <div class="fav-grid">
 
-        <p>কোনো Service সম্পর্কে জানতে নিচের বোতামে চাপ দিন।</p>
+      <button class="fav-card nature-card" data-open="naturePage"
+              data-category="naturePage" type="button">
+        <span class="fav-icon">🌿</span>
+        <h2>Nature &amp; Calm</h2>
+        <p>Quiet rivers, green forests and gentle breezes. A little space to breathe, relax and find peace.</p>
+        <span class="fav-link">Explore nature ↗</span>
+      </button>
+
+      <button class="fav-card flower-card" data-open="flowersPage"
+              data-category="flowersPage" type="button">
+        <span class="fav-icon">🌼</span>
+        <h2>Flowers</h2>
+        <p>Beautiful blossoms, delicate colours and the simple joy that makes an ordinary day special.</p>
+        <span class="fav-link">Discover flowers ↗</span>
+      </button>
+
+      <button class="fav-card sleep-card" data-open="sleepPage"
+              data-category="sleepPage" type="button">
+        <span class="fav-icon">🌙</span>
+        <h2>Sleeping</h2>
+        <p>Peaceful nights, gentle snowfall and relaxing videos to help you slow down and unwind.</p>
+        <span class="fav-link">Enter the night ↗</span>
+      </button>
+
+      <button class="fav-card music-card" data-open="musicPage"
+              data-category="musicPage" type="button">
+        <span class="fav-icon">🎧</span>
+        <h2>Music</h2>
+        <p>Ruposh OST — an emotional melody, beautiful atmosphere and moments worth remembering.</p>
+        <span class="fav-link">Listen to music ↗</span>
+      </button>
+
+    </div>
+  </div>
+
+  <!-- Nature page -->
+  <div id="naturePage" class="fav-page">
+    <button class="fav-back" type="button" data-back>← Back to Favorites</button>
+
+    <article class="fav-detail nature-detail">
+      <span class="detail-icon">🌿</span>
+      <span class="detail-label">BREATHE · SLOW DOWN · RESET</span>
+      <h2>Nature &amp; Calm</h2>
+
+      <p>Nature has a quiet way of making everything feel lighter. The sound of flowing water, the movement of leaves and the beauty of an open sky remind us to slow down and enjoy the present moment.</p>
+
+      <p>Take a deep breath. Let your thoughts settle. Sometimes, a little time surrounded by nature is all we need to feel refreshed again.</p>
+
+      <div class="nature-decoration" aria-hidden="true">
+        🌲　🍃　🏞️　🍃　🌲
+      </div>
+    </article>
+  </div>
+
+  <!-- Flowers page -->
+  <div id="flowersPage" class="fav-page">
+    <button class="fav-back" type="button" data-back>← Back to Favorites</button>
+
+    <article class="fav-detail flowers-detail">
+      <span class="detail-icon">🌼</span>
+      <span class="detail-label">A LITTLE BEAUTY IN EVERY BLOOM</span>
+      <h2>The World of Flowers</h2>
+
+      <p>Every flower has its own beauty. Roses bring elegance, sunflowers carry warmth, and daisies remind us of life's simple joys.</p>
+
+      <p>Flowers add colour to ordinary days and can make someone smile without saying a word. Their beauty reminds us that the smallest things can create the sweetest memories.</p>
+
+      <div class="flower-gallery" aria-label="Flower decorations">
+        <span>🌷</span><span>🌼</span><span>🌻</span><span>🌸</span><span>🌺</span>
+      </div>
+    </article>
+  </div>
+
+  <!-- Sleeping page -->
+  <div id="sleepPage" class="fav-page">
+    <button class="fav-back" type="button" data-back>← Back to Favorites</button>
+
+    <article class="fav-detail sleep-detail">
+      <span class="detail-icon">🌙</span>
+      <span class="detail-label">SLOW EVENINGS · QUIET DREAMS</span>
+      <h2>Sleeping &amp; Relaxation</h2>
+
+      <p>Dim the lights, take a breath and enjoy a quiet moment. Let these peaceful videos create a calm atmosphere while you relax.</p>
+
+      <div class="sleep-video-frame">
+        <video id="sleepVideo" controls playsinline preload="metadata">
+          <source src="photos/sleep.mp4" type="video/mp4">
+          Your browser does not support this video.
+        </video>
+        <div id="sleepSnow" class="sleep-snow" aria-hidden="true"></div>
       </div>
 
-      <div class="services">
-        <!-- Birthday -->
+      <div class="sleep-controls">
+        <button id="sleepPrev" type="button">⏮ Previous</button>
+        <button id="sleepPlay" type="button">▶ Play</button>
+        <button id="sleepNext" type="button">Next ⏭</button>
+      </div>
 
-        <div class="card">
-          <div class="icon">🎂</div>
+      <p id="sleepStatus" class="media-status" aria-live="polite">
+        Your peaceful moment is ready.
+      </p>
+    </article>
+  </div>
 
-          <h3>Birthday Website</h3>
+  <!-- Music page -->
+  <div id="musicPage" class="fav-page">
+    <button class="fav-back" type="button" data-back>← Back to Favorites</button>
 
-          <p>জন্মদিনে কাউকে বিশেষভাবে শুভেচ্ছা জানানোর জন্য।</p>
+    <article class="fav-detail music-detail">
+      <span class="detail-icon music-note">♫</span>
+      <span class="detail-label">YOUR MUSIC CORNER</span>
+      <h2>Ruposh — OST</h2>
 
-          <button
-            class="info-btn"
-            onclick="showInfo(this)"
-          >
-            সহজ করে দেখুন
-          </button>
+      <p class="music-intro">
+        A memorable soundtrack with emotional vocals, a soulful melody
+        and a dramatic atmosphere. Enjoy the music and let the moment unfold.
+      </p>
 
-          <div class="details">
+      <div class="music-video">
+        <video id="musicVideo" controls playsinline preload="metadata">
+          <source src="photos/ruposh.mp4" type="video/mp4">
+          Your browser does not support this video.
+        </video>
+      </div>
+
+      <div class="music-controls">
+        <button id="musicPlay" type="button">▶ Play / Resume</button>
+        <button id="musicPause" type="button">Ⅱ Pause</button>
+      </div>
+
+      <div class="music-timer">
+        <label for="musicTimer">Listening timer</label>
+        <select id="musicTimer">
+          <option value="">No timer</option>
+          <option value="300">5 minutes</option>
+          <option value="600">10 minutes</option>
+          <option value="900">15 minutes</option>
+          <option value="1800">30 minutes</option>
+        </select>
+      </div>
+
+      <p id="musicTimerStatus" class="media-status" aria-live="polite">
+        Ready to play Ruposh.
+      </p>
+
+      <div class="music-description">
+        <h3>About the music</h3>
+        <p>Ruposh is known for its expressive OST and memorable musical atmosphere. Use the player controls to listen, pause and resume whenever you like.</p>
+      </div>
+    </article>
+  </div>
+
+</section>
+
+
+
+</section>
+<!-- ===== END FAVORITES SECTION ===== -->
+
+    </section>
+
+    <!-- =========================================================
+     HOBBIES
+========================================================= -->
+
+    <section id="hobbiesPage" class="screen inner-screen hobbies-page">
+
+    <!-- Animated Background -->
+    <div class="hobbies-bg" aria-hidden="true">
+
+        <span class="hobby-bg-item bg-leaf-1">🍃</span>
+        <span class="hobby-bg-item bg-leaf-2">🌿</span>
+        <span class="hobby-bg-item bg-flower-1">🌸</span>
+        <span class="hobby-bg-item bg-flower-2">🌷</span>
+
+        <span class="bg-butterfly bg-butterfly-1">🦋</span>
+        <span class="bg-butterfly bg-butterfly-2">🦋</span>
+
+        <span class="bg-star bg-star-1">✦</span>
+        <span class="bg-star bg-star-2">✧</span>
+        <span class="bg-star bg-star-3">⋆</span>
+        <span class="bg-star bg-star-4">✦</span>
+
+        <div class="bg-cloud bg-cloud-1"></div>
+        <div class="bg-cloud bg-cloud-2"></div>
+
+    </div>
+
+
+    <div class="hobbies-container">
+
+        <!-- Back -->
+        <button
+            class="back-button"
+            data-back
+            type="button"
+        >
+            ← Back
+        </button>
+
+
+        <!-- Header -->
+        <header class="hobbies-header">
+
+            <div class="hobbies-main-icon">
+                🐧
+            </div>
+
+            <span class="hobbies-eyebrow">
+                LITTLE THINGS SHE ENJOYS
+            </span>
+
+            <h1>
+                Hobbies
+            </h1>
+
             <p>
-              নাম, ছবি, Birthday Wish, সুন্দর Animation এবং Surprise অংশ দিয়ে
-              একটি ব্যক্তিগত Birthday Website বানানো যাবে।
-
-              <br /><br />
-
-              Price জানতে Contact করুন।
+                The little things that make ordinary days
+                feel peaceful, enjoyable and beautiful. ✨
             </p>
-          </div>
+
+        </header>
+
+
+        <!-- Hobbies -->
+        <div class="hobbies-grid">
+
+
+           
+            <article class="hobby-card nature-theme">
+
+                <span class="hobby-number"></span>
+
+                <div class="hobby-icon">
+                    🌿
+                </div>
+
+                <div class="hobby-text">
+                    <h2>Nature Walks</h2>
+                    <p>
+                        Quiet walks, green surroundings
+                        and a little time close to nature.
+                    </p>
+                </div>
+
+                <span class="hobby-float">🍃</span>
+
+            </article>
+
+                      
+         
+           <article class="hobby-card sleep-theme">
+
+                <span class="hobby-number"></span>
+
+                <div class="hobby-icon">
+                    😴
+                </div>
+
+                <div class="hobby-text">
+                    <h2>Sleeping</h2>
+                    <p>
+                        A cozy bed, peaceful rest
+                        and enjoying a little extra sleep.
+                    </p>
+                </div>
+
+                <span class="hobby-float">🌙</span>
+
+            </article>
+
+            <article class="hobby-card plant-theme">
+
+                <span class="hobby-number"></span>
+
+                <div class="hobby-icon">
+                    🪴
+                </div>
+
+                <div class="hobby-text">
+                    <h2>Plant Care</h2>
+                    <p>
+                        Taking care of little plants
+                        and enjoying their quiet growth.
+                    </p>
+                </div>
+
+                <span class="hobby-float">🌱</span>
+
+            </article>
+
+
+           
+            <article class="hobby-card sunset-theme">
+
+                <span class="hobby-number"></span>
+
+                <div class="hobby-icon">
+                    🌅
+                </div>
+
+                <div class="hobby-text">
+                    <h2>Sunset Watching</h2>
+                    <p>
+                        Slow evenings, beautiful skies
+                        and peaceful sunset moments.
+                    </p>
+                </div>
+
+                <span class="hobby-float">☁️</span>
+
+            </article>
+
+
+          
+            <article class="hobby-card rain-theme">
+
+                <span class="hobby-number"></span>
+
+                <div class="hobby-icon">
+                    🌧️
+                </div>
+
+                <div class="hobby-text">
+                    <h2>Rainy Days</h2>
+                    <p>
+                        The sound of rain, cool weather
+                        and cozy quiet moments.
+                    </p>
+                </div>
+
+                <span class="hobby-float">💧</span>
+
+            </article>
+
+
+            
+            <article class="hobby-card tea-theme">
+
+                <span class="hobby-number"></span>
+
+                <div class="hobby-icon">
+                    ☕
+                </div>
+
+                <div class="hobby-text">
+                    <h2>Tea & Adda</h2>
+                    <p>
+                        A warm cup of tea and relaxed
+                        conversations with familiar people.
+                    </p>
+                </div>
+
+                <span class="hobby-float">🤎</span>
+
+            </article>
+
+
+            <article class="hobby-card flower-theme">
+
+                <span class="hobby-number"></span>
+
+                <div class="hobby-icon">
+                    🌸
+                </div>
+
+                <div class="hobby-text">
+                    <h2>Flowers</h2>
+                    <p>
+                        Beautiful flowers, soft colors
+                        and the simple beauty of nature.
+                    </p>
+                </div>
+
+                <span class="hobby-float">🌷</span>
+
+            </article>
+
+
+           
+             <article class="hobby-card family-theme">
+
+                <span class="hobby-number"></span>
+
+                <div class="hobby-icon">
+                    🤍
+                </div>
+
+                <div class="hobby-text">
+                    <h2>Family Time</h2>
+                    <p>
+                        Simple moments, conversations
+                        and time spent with family.
+                    </p>
+                </div>
+
+                <span class="hobby-float">🏡</span>
+
+            </article>
+
+            <article class="hobby-card music-theme">
+
+                <span class="hobby-number"></span>
+
+                <div class="hobby-icon">
+                    🎧
+                </div>
+
+                <div class="hobby-text">
+                    <h2>Music</h2>
+                    <p>
+                        Good songs for different moods,
+                        moments and peaceful times.
+                    </p>
+                </div>
+
+                <span class="hobby-float">🎵</span>
+
+            </article>
+
+
+            
+            <article class="hobby-card movie-theme">
+
+                <span class="hobby-number"></span>
+
+                <div class="hobby-icon">
+                    🎬
+                </div>
+
+                <div class="hobby-text">
+                    <h2>Movies & Dramas</h2>
+                    <p>
+                        Interesting stories, memorable scenes
+                        and a comfortable screen-time break.
+                    </p>
+                </div>
+
+                <span class="hobby-float">✨</span>
+
+            </article>
+
+
+             <article class="hobby-card reels-theme">
+
+                <span class="hobby-number"></span>
+
+                <div class="hobby-icon">
+                    😂
+                </div>
+
+                <div class="hobby-text">
+                    <h2>Memes & Reels</h2>
+                    <p>
+                        Funny clips, entertaining moments
+                        and a little endless scrolling.
+                    </p>
+                </div>
+
+                <span class="hobby-float">📱</span>
+
+            </article>
+
+
+            
+            <article class="hobby-card reading-theme">
+
+                <span class="hobby-number"></span>
+
+                <div class="hobby-icon">
+                    📚
+                </div>
+
+                <div class="hobby-text">
+                    <h2>Reading</h2>
+                    <p>
+                        Getting lost in interesting pages,
+                        stories and ideas.
+                    </p>
+                </div>
+
+                <span class="hobby-float">📖</span>
+
+            </article>
+
+
+            <article class="hobby-card journal-theme">
+
+                <span class="hobby-number"></span>
+
+                <div class="hobby-icon">
+                    📝
+                </div>
+
+                <div class="hobby-text">
+                    <h2>Journaling</h2>
+                    <p>
+                        Putting thoughts, feelings
+                        and little memories into words.
+                    </p>
+                </div>
+
+                <span class="hobby-float">✍️</span>
+
+            </article>
+
+
+            
+            <article class="hobby-card photo-theme">
+
+                <span class="hobby-number"></span>
+
+                <div class="hobby-icon">
+                    📸
+                </div>
+
+                <div class="hobby-text">
+                    <h2>Photography</h2>
+                    <p>
+                        Capturing beautiful views,
+                        little details and memorable moments.
+                    </p>
+                </div>
+
+                <span class="hobby-float">💫</span>
+
+            </article>
+
+
+            <article class="hobby-card trip-theme">
+
+                <span class="hobby-number"></span>
+
+                <div class="hobby-icon">
+                    🚗
+                </div>
+
+                <div class="hobby-text">
+                    <h2>Little Trips</h2>
+                    <p>
+                        Short journeys, new views
+                        and simple memories along the way.
+                    </p>
+                </div>
+
+                <span class="hobby-float">🗺️</span>
+
+            </article>
+
+
+        
+            <article class="hobby-card shopping-theme">
+
+                <span class="hobby-number"></span>
+
+                <div class="hobby-icon">
+                    🛍️
+                </div>
+
+                <div class="hobby-text">
+                    <h2>Shopping</h2>
+                    <p>
+                        Exploring little finds,
+                        useful things and something nice.
+                    </p>
+                </div>
+
+                <span class="hobby-float">✨</span>
+
+            </article>
+
+
+        
+            <article class="hobby-card fashion-theme">
+
+                <span class="hobby-number"></span>
+
+                <div class="hobby-icon">
+                    👗
+                </div>
+
+                <div class="hobby-text">
+                    <h2>Fashion & Styling</h2>
+                    <p>
+                        Exploring outfits, personal style
+                        and beautiful little details.
+                    </p>
+                </div>
+
+                <span class="hobby-float">🌷</span>
+
+            </article>
+
+
+        
+          
+
+
+            <article class="hobby-card friends-theme">
+
+                <span class="hobby-number"></span>
+
+                <div class="hobby-icon">
+                    🐍
+                </div>
+
+                <div class="hobby-text">
+                    <h2>Friends & Adda</h2>
+                    <p>
+                        Good conversations, laughter
+                        and memorable moments with friends.
+                    </p>
+                </div>
+
+                <span class="hobby-float">💬</span>
+
+            </article>
+
+              <article class="hobby-card baking-theme">
+
+                <span class="hobby-number"></span>
+
+                <div class="hobby-icon">
+                    🧁
+                </div>
+
+                <div class="hobby-text">
+                    <h2>Baking</h2>
+                    <p>
+                        Sweet little creations,
+                        cozy moments and something delicious.
+                    </p>
+                </div>
+
+                <span class="hobby-float">🍰</span>
+
+            </article>
+           
+  
+
         </div>
 
-        <!-- Digital Gift -->
 
-        <div class="card">
-          <div class="icon">🎁</div>
+        <!-- Ending -->
+        <div class="hobbies-ending">
 
-          <h3>Digital Gift</h3>
+            <span>🦋</span>
 
-          <p>ওয়েবসাইটের মাধ্যমে কাউকে ডিজিটাল উপহার দেওয়ার জন্য।</p>
-
-          <button
-            class="info-btn"
-            onclick="showInfo(this)"
-          >
-            সহজ করে দেখুন
-          </button>
-
-          <div class="details">
             <p>
-              একটি সুন্দর Box বা Button থাকবে। সেখানে Click করলে ধীরে ধীরে
-              Message, Photo অথবা Surprise দেখা যাবে।
-
-              <br /><br />
-
-              Price জানতে Contact করুন।
+                Sometimes the little things
+                make the best moments.
             </p>
-          </div>
+
+            <span>🌿</span>
+
         </div>
 
-        <!-- Sorry Letter -->
+    </div>
 
-        <div class="card">
-          <div class="icon">💌</div>
+</section>
 
-          <h3>Sorry Letter</h3>
+<!-- ================= MEMORIES PAGE ================= -->
+<!-- =====================================================
+     MEMORIES PAGE
+     ===================================================== -->
 
-          <p>কাউকে নিজের কথা সুন্দরভাবে জানানোর জন্য।</p>
+<section id="memoriesPage" class="screen inner-screen memories-page">
 
-          <button
-            class="info-btn"
-            onclick="showInfo(this)"
-          >
-            সহজ করে দেখুন
-          </button>
+    <!-- Animated Nature Background -->
+    <div class="memories-world">
 
-          <div class="details">
-            <p>
-              চিঠির মতো একটি সুন্দর Design থাকবে। Button চাপলে Letter খুলবে এবং
-              আপনার নিজের লেখা Message দেখা যাবে।
+        <!-- Sky -->
+        <div class="memory-sky-glow"></div>
 
-              <br /><br />
+        <!-- Clouds -->
+        <span class="memory-cloud cloud-1">☁️</span>
+        <span class="memory-cloud cloud-2">☁️</span>
+        <span class="memory-cloud cloud-3">🌤️</span>
 
-              Price জানতে Contact করুন।
-            </p>
-          </div>
+        <!-- Flying Birds -->
+        <div class="memory-birds">
+            <span class="bird bird-1">🕊️</span>
+            <span class="bird bird-2">🐦</span>
+            <span class="bird bird-3">🕊️</span>
+            <span class="bird bird-4">🐦</span>
+            <span class="bird bird-5">🦢</span>
+            <span class="bird bird-6">🐧</span>
         </div>
 
-        <!-- Love Letter -->
+        <!-- Extra Flying Elements -->
+        <span class="memory-float float-feather">🪶</span>
+        <span class="memory-float float-butterfly">🦋</span>
+        <span class="memory-float float-butterfly-2">🦋</span>
+        <span class="memory-float float-flower">🌸</span>
+        <span class="memory-float float-leaf">🍃</span>
 
-        <div class="card">
-          <div class="icon">💖</div>
-
-          <h3>Love Letter</h3>
-
-          <p>বিশেষ কাউকে নিজের মনের কথা জানানোর জন্য।</p>
-
-          <button
-            class="info-btn"
-            onclick="showInfo(this)"
-          >
-            সহজ করে দেখুন
-          </button>
-
-          <div class="details">
-            <p>
-              Name, Photo, Message, Animation এবং সুন্দর Design দিয়ে ব্যক্তিগত
-              Letter Website তৈরি করা যাবে।
-
-              <br /><br />
-
-              Price জানতে Contact করুন।
-            </p>
-          </div>
+        <!-- Mountains -->
+        <div class="memory-mountains">
+            <div class="mountain mountain-1"></div>
+            <div class="mountain mountain-2"></div>
+            <div class="mountain mountain-3"></div>
         </div>
 
-        <!-- Surprise Message -->
+        <!-- River -->
+        <div class="memory-river">
 
-        <div class="card">
-          <div class="icon">🎉</div>
+            <div class="river-shine shine-1"></div>
+            <div class="river-shine shine-2"></div>
+            <div class="river-shine shine-3"></div>
+            <div class="river-shine shine-4"></div>
 
-          <h3>Surprise Message</h3>
+            <!-- Boat -->
+            <div class="memory-boat">
 
-          <p>বন্ধুকে বা পরিচিত কাউকে মজারভাবে Message দেওয়ার জন্য।</p>
+                <span class="boat-person">🧍</span>
 
-          <button
-            class="info-btn"
-            onclick="showInfo(this)"
-          >
-            সহজ করে দেখুন
-          </button>
+                <div class="boat-body"></div>
 
-          <div class="details">
-            <p>
-              Button, Question, Funny Text, Photo এবং Surprise Animation দিয়ে
-              ছোট একটি মজার Website বানানো যাবে।
+                <div class="boat-rope"></div>
 
-              <br /><br />
+            </div>
 
-              Price জানতে Contact করুন।
-            </p>
-          </div>
         </div>
 
-        <!-- Funny Website -->
-
-        <div class="card">
-          <div class="icon">😂</div>
-
-          <h3>Funny Website</h3>
-
-          <p>বন্ধুকে মজা করে অবাক করার জন্য।</p>
-
-          <button
-            class="info-btn"
-            onclick="showInfo(this)"
-          >
-            সহজ করে দেখুন
-          </button>
-
-          <div class="details">
-            <p>
-              Funny Question, Button, Animation, Photo এবং বিভিন্ন মজার Message
-              ব্যবহার করা যাবে।
-
-              <br /><br />
-
-              Price জানতে Contact করুন।
-            </p>
-          </div>
+        <!-- River Side Nature -->
+        <div class="memory-ground">
+            <span>🌿</span>
+            <span>🌱</span>
+            <span>🌸</span>
+            <span>🌷</span>
+            <span>🍃</span>
+            <span>🪻</span>
+            <span>🌿</span>
+            <span>🍄</span>
         </div>
 
-        <!-- Event Invitation -->
+    </div>
 
-        <div class="card">
-          <div class="icon">🎊</div>
 
-          <h3>Event Invitation</h3>
+    <!-- =================================================
+         BACK BUTTON
+         ================================================= -->
 
-          <p>Birthday বা ছোট কোনো অনুষ্ঠানের Invitation-এর জন্য।</p>
+      <button
+          class="back-button"
+          data-back
+        >
+          ← Back
+        </button>
 
-          <button
-            class="info-btn"
-            onclick="showInfo(this)"
-          >
-            সহজ করে দেখুন
-          </button>
 
-          <div class="details">
+    <!-- =================================================
+         MEMORY INTRO / GIFT BOX
+         ================================================= -->
+
+    <div id="memoryIntro" class="memory-intro">
+
+        <div class="memory-intro-content">
+
+            <span class="memory-small-title">
+                📸 LITTLE MEMORIES ✨
+            </span>
+
+            <h1>
+                A Little Journey 🌿
+            </h1>
+
             <p>
-              Event Name, Date, Time, Location, Contact এবং Countdown যুক্ত করা
-              যাবে।
-
-              <br /><br />
-
-              Price জানতে Contact করুন।
+                A collection of simple moments,
+                little memories and beautiful days. 🦋
             </p>
-          </div>
+
+
+            <!-- Gift Box -->
+            <div class="memory-gift-area">
+
+                <div class="memory-gift-glow"></div>
+
+                <div
+                    id="memoryGift"
+                    class="memory-gift"
+                >
+
+                    <!-- Gift Lid -->
+                    <div class="gift-lid">
+
+                        <div class="gift-ribbon"></div>
+
+                    </div>
+
+                    <!-- Gift Box -->
+                    <div class="gift-box">
+
+                        <div class="gift-ribbon vertical"></div>
+
+                        <div class="gift-ribbon horizontal"></div>
+
+                    </div>
+
+                    <!-- Gift Decorations -->
+                    <div class="gift-spark spark-1">
+                        ✦
+                    </div>
+
+                    <div class="gift-spark spark-2">
+                        ✨
+                    </div>
+
+                    <div class="gift-spark spark-3">
+                        💫
+                    </div>
+
+                </div>
+
+
+                <!-- Click Button -->
+                <button
+                    id="memoryClickHere"
+                    class="memory-click-button"
+                    type="button"
+                >
+                    🎁 Click Here ✨
+                </button>
+
+            </div>
+
         </div>
 
-        <!-- Student Profile -->
+    </div>
 
-        <div class="card">
-          <div class="icon">🎓</div>
 
-          <h3>Student Profile</h3>
+    <!-- =================================================
+         PHOTO INTRO
+         ALL IMAGES ARE REAL <img> TAGS
+         ================================================= -->
 
-          <p>নিজের পরিচয় ও কাজগুলো এক জায়গায় দেখানোর জন্য।</p>
+    <div
+        id="memoryPhotoIntro"
+        class="memory-photo-intro"
+    >
 
-          <button
-            class="info-btn"
-            onclick="showInfo(this)"
-          >
-            সহজ করে দেখুন
-          </button>
 
-          <div class="details">
+    </div>
+
+
+    <!-- =================================================
+         FULL MEMORY GALLERY
+         ================================================= -->
+
+    <div
+        id="memoryGallery"
+        class="memory-gallery"
+    >
+
+        <!-- Decorative Floating Emojis -->
+        <span class="gallery-float gf-1">🦋</span>
+        <span class="gallery-float gf-2">🌸</span>
+        <span class="gallery-float gf-3">🍃</span>
+        <span class="gallery-float gf-4">✨</span>
+        <span class="gallery-float gf-5">💐</span>
+        <span class="gallery-float gf-6">🪶</span>
+
+
+        <!-- Gallery Heading -->
+        <div class="memory-gallery-top">
+
+            <span>
+                📸 LITTLE MEMORIES
+            </span>
+
+            <h2>
+                Moments ✨
+            </h2>
+
             <p>
-              Name, Photo, Education, Skills, Projects এবং Social Links এক
-              জায়গায় সুন্দরভাবে দেখানো যাবে।
-
-              <br /><br />
-
-              Price জানতে Contact করুন।
+                Simple moments, beautifully remembered.
             </p>
-          </div>
+
         </div>
 
-        <!-- Countdown -->
 
-        <div class="card">
-          <div class="icon">📅</div>
+        <!-- Main Photo -->
+        <div class="memory-gallery-stage">
 
-          <h3>Countdown</h3>
+            <div class="memory-gallery-frame">
 
-          <p>কোনো বিশেষ দিনের আগে কত সময় বাকি তা দেখানোর জন্য।</p>
+                <div class="memory-gallery-glow"></div>
 
-          <button
-            class="info-btn"
-            onclick="showInfo(this)"
-          >
-            সহজ করে দেখুন
-          </button>
 
-          <div class="details">
-            <p>
-              একটি নির্দিষ্ট Date দেওয়া থাকবে। Website সেই Date পর্যন্ত বাকি
-              থাকা দিন, ঘণ্টা, মিনিট ও সেকেন্ড দেখাবে।
+                <!--
+                    Main gallery image.
+                    JavaScript will change its src
+                    using the IMG tags above.
+                -->
 
-              <br /><br />
+                <img
+                    id="memoryGalleryImage"
+                    src="photos/lamiya.jpg"
+                    alt="Memory"
+                >
 
-              এই Website-এ নিচে 19 April-এর Countdown একটি উদাহরণ হিসেবে দেওয়া
-              আছে।
 
-              <br /><br />
+                <!-- Photo Decoration -->
+                <div class="photo-corner corner-top">
+                    ✦
+                </div>
 
-              Price জানতে Contact করুন।
-            </p>
+                <div class="photo-corner corner-bottom">
+                    ✧
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Image Number -->
+        <div class="memory-gallery-info">
+
+            <div
+                id="memoryGalleryCount"
+                class="memory-gallery-count"
+            >
+                01 / 14
+            </div>
+
+        </div>
+
+
+        <!-- Progress -->
+        <div class="memory-gallery-progress">
+
+            <div
+                id="memoryGalleryProgress"
+            ></div>
+
+        </div>
+
+
+        <!-- Small Decorative Text -->
+        <div class="memory-gallery-bottom">
+
+            <span>🌿</span>
+            <span>Moments</span>
+            <span>🦋</span>
+
+        </div>
+
+    </div>
+
+</section>
+    <!-- =========================================================
+     MUSIC
+========================================================= -->
+
+    <section
+      id="musicPage"
+      class="screen inner-screen music-screen"
+    >
+      <div class="page-content">
+        <button
+          class="back-button"
+          data-back
+        >
+          ← Back
+        </button>
+
+        <div class="inner-icon">🎵</div>
+
+        <h1 class="page-title">Music</h1>
+
+        <div class="music-card">
+          <div class="music-note">🎵 🎶 🎵</div>
+
+          <p>Good music makes ordinary moments feel special.</p>
+
+          <div class="music-wave">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- =========================
-     CUSTOMIZE
-========================= -->
+    <!-- =========================================================
+     FLOWERS
+========================================================= -->
 
-    <section id="custom">
-      <div class="section-title">
-        <h2> 🛠️Customize</h2>
+    <section
+      id="flowersPage"
+      class="screen inner-screen flowers-screen"
+    >
+      <div class="page-content">
+        <button
+          class="back-button"
+          data-back
+        >
+          ← Back
+        </button>
 
-        <p>Website প্রয়োজন অনুযায়ী পরিবর্তন করা যাবে।</p>
-      </div>
-
-      <div class="custom">
-        <div class="custom-item">
-          <strong> Name </strong>
-
-          <span> যে নাম দিতে চান সেটি ব্যবহার করা যাবে। </span>
+        <div class="flower-rain">
+          <span>🌸</span>
+          <span>🌷</span>
+          <span>💐</span>
+          <span>🪻</span>
+          <span>🌸</span>
+          <span>🌷</span>
         </div>
 
-        <div class="custom-item">
-          <strong> Photo </strong>
+        <div class="inner-icon">💐</div>
 
-          <span> নিজের পছন্দের ছবি দেওয়া যাবে। </span>
-        </div>
+        <h1 class="page-title">Flower Garden</h1>
 
-        <div class="custom-item">
-          <strong> Text </strong>
-
-          <span> নিজের ইচ্ছামতো লেখা বা Message দেওয়া যাবে। </span>
-        </div>
-
-        <div class="custom-item">
-          <strong> Color </strong>
-
-          <span> পছন্দের Color অনুযায়ী Design পরিবর্তন করা যাবে। </span>
-        </div>
-
-        <div class="custom-item">
-          <strong> Animation </strong>
-
-          <span> Website-এ প্রয়োজন অনুযায়ী Animation যোগ করা যাবে। </span>
-        </div>
-
-        <div class="custom-item">
-          <strong> Countdown </strong>
-
-          <span> যে Date চান সেই Date অনুযায়ী Countdown দেওয়া যাবে। </span>
-        </div>
-
-        <div class="custom-item">
-          <strong> Social Links </strong>
-
-          <span> Facebook, Instagram, WhatsApp এবং Email যুক্ত করা যাবে। </span>
-        </div>
-
-        <div class="custom-item">
-          <strong> Dark / Light </strong>
-
-          <span> Website-এর Dark ও Light Mode পরিবর্তন করা যাবে। </span>
+        <div class="flower-grid">
+          <div>🌸</div>
+          <div>🌷</div>
+          <div>💐</div>
+          <div>🪻</div>
+          <div>🌸</div>
+          <div>🌷</div>
         </div>
       </div>
     </section>
 
-    <!-- =========================
-     COUNTDOWN
-========================= -->
+    <!-- =========================================================
+     FUN
+========================================================= -->
 
-    <section>
-      <div class="section-title">
-        <h2>📅 Countdown</h2>
+    <section
+      id="funPage"
+      class="screen inner-screen fun-screen"
+    >
+      <div class="page-content">
+        <button
+          class="back-button"
+          data-back
+        >
+          ← Back
+        </button>
 
-        <p>19 April পর্যন্ত কত সময় বাকি তা এখানে দেখা যাবে।</p>
+        <div class="inner-icon">😂</div>
+
+        <h1 class="page-title">Fun Corner</h1>
+
+        <div class="fun-card">
+          <div class="fun-emoji">🐣 🐥 👾 🐲</div>
+
+          <h2>Warning! 😆</h2>
+
+          <p>
+            Too much happiness may cause random smiling, unnecessary laughing
+            and excessive celebration. 🎉
+          </p>
+
+          <div class="fun-emojis">😂 ✨ 🦋 😂 ✨</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+     PEACEFUL PLACE
+========================================================= -->
+
+    <section
+      id="peacefulPage"
+      class="screen inner-screen peaceful-screen"
+    >
+      <div class="peace-background">
+        <div class="peace-moon">🌙</div>
+
+        <div class="peace-cloud pc1"></div>
+        <div class="peace-cloud pc2"></div>
+
+        <!-- RIGHT TO LEFT -->
+        <span class="peace-bird pb1">🕊️</span>
+        <span class="peace-bird pb2">🐦</span>
+
+        <span class="peace-butterfly pbf1">🦋</span>
+
+        <div class="peace-water"></div>
       </div>
 
-      <div class="countdown-box">
-        <h3>19 April আসতে বাকি</h3>
+      <div class="page-content">
+        <button
+          class="back-button"
+          data-back
+        >
+          ← Back
+        </button>
 
-        <p>
-          Countdown প্রতি বছর automatically পরবর্তী 19 April-এর জন্য আবার শুরু
-          হবে।
-        </p>
+        <div class="inner-icon">🦢</div>
 
-        <div class="countdown">
-          <div class="time">
-            <strong id="days"> 00 </strong>
+        <h1 class="page-title">Peaceful Place</h1>
 
-            <span> দিন </span>
+        <div class="peace-card">
+          <p>🌊 Take a breath.</p>
+
+          <p>
+            Watch the clouds, listen to the water, and enjoy a quiet little
+            moment.
+          </p>
+
+          <div class="peace-line">🍃 🦢 🕊️ 🌊 🦋 🍃</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+     ICE CREAM
+========================================================= -->
+
+    <section
+      id="icecreamPage"
+      class="screen inner-screen icecream-screen"
+    >
+      <div class="page-content">
+        <button
+          class="back-button"
+          data-back
+        >
+          ← Back
+        </button>
+
+        <div class="inner-icon">🍦</div>
+
+        <h1 class="page-title">Ice Cream Corner</h1>
+
+        <div class="icecream-grid">
+          <div class="ice-card">
+            🍓
+            <span>Strawberry</span>
           </div>
 
-          <div class="time">
-            <strong id="hours"> 00 </strong>
-
-            <span> ঘণ্টা </span>
+          <div class="ice-card">
+            🍫
+            <span>Chocolate</span>
           </div>
 
-          <div class="time">
-            <strong id="minutes"> 00 </strong>
-
-            <span> মিনিট </span>
+          <div class="ice-card">
+            🍦
+            <span>Vanilla</span>
           </div>
 
-          <div class="time">
-            <strong id="seconds"> 00 </strong>
-
-            <span> সেকেন্ড </span>
+          <div class="ice-card">
+            🍪
+            <span>Cookie</span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- =========================
-     CONTACT
-========================= -->
+    <!-- =========================================================
+     WISH LETTER
+========================================================= -->
 
-    <section id="contact">
-      <div class="contact">
-        <h2>Contact</h2>
+    <section
+      id="wishPage"
+      class="screen inner-screen wish-screen"
+    >
+      <div class="page-content">
+        <button
+          class="back-button"
+          data-back
+        >
+          ← Back
+        </button>
 
-        <p>
-          কোনো Website বানাতে চাইলে অথবা Price জানতে নিচের যেকোনো মাধ্যমে
-          যোগাযোগ করুন।
-        </p>
+        <div class="letter">
+          <div class="letter-icon">💌</div>
 
-        <div class="socials">
-          <!-- WhatsApp -->
+          <h1>A Birthday Wish</h1>
 
-          <a
-            href="https://wa.me/8801611895004"
-            target="_blank"
-            class="social"
-          >
-            💬 WhatsApp
-          </a>
+          <p>Dear Lamiya,</p>
 
-          <!-- Facebook -->
+          <p>Happy Birthday! 🎉</p>
 
-          <a
-            href="https://www.facebook.com/share/1DjfRqbyjo/"
-            target="_blank"
-            class="social"
-          >
-            🐧 Facebook
-          </a>
+          <p>
+            May the coming year bring you happiness, success, good health,
+            beautiful memories and many peaceful moments.
+          </p>
 
-          <!-- Instagram -->
+          <p>
+            Keep smiling, keep learning, keep enjoying the little things, and
+            make this new year of life memorable. 🌷✨
+          </p>
 
-          <a
-            href="https://www.instagram.com/mehedy_5/"
-            target="_blank"
-            class="social"
-          >
-            🐣 Instagram
-          </a>
-
-          <!-- Email -->
-
-          <a
-            href="mailto:tisanulislam@gmail.com"
-            class="social"
-          >
-            📧 Email
-          </a>
+          <div class="letter-footer">🌸 💐 🦋 🕊️ 🌸</div>
         </div>
       </div>
     </section>
 
-    <!-- =========================
-     FOOTER
-========================= -->
-
-    <footer>© 2026 Create Hub</footer>
-
-    <script>
-      /* =========================
-   DAY / NIGHT MODE
-========================= */
-
-      function toggleTheme() {
-        document.body.classList.toggle("light");
-
-        const button = document.getElementById("theme");
-
-        if (document.body.classList.contains("light")) {
-          button.innerHTML = "🌙 Night";
-        } else {
-          button.innerHTML = "☀️ Day";
-        }
-      }
-
-      /* =========================
-   SERVICE INFORMATION
-========================= */
-
-      function showInfo(button) {
-        const details = button.nextElementSibling;
-
-        details.classList.toggle("open");
-
-        if (details.classList.contains("open")) {
-          button.innerHTML = "▲ বন্ধ করুন";
-        } else {
-          button.innerHTML = "সহজ করে দেখুন";
-        }
-      }
-
-      /* =========================
-   19 APRIL COUNTDOWN
-========================= */
-
-      function updateCountdown() {
-        const now = new Date();
-
-        let year = now.getFullYear();
-
-        /*
-       JavaScript-এ:
-
-       January = 0
-       February = 1
-       March = 2
-       April = 3
-
-       তাই 19 April =
-       month 3, date 19
-    */
-
-        let target = new Date(year, 3, 19, 0, 0, 0);
-
-        /*
-       এই বছরের 19 April
-       পার হয়ে গেলে
-       পরের বছরের 19 April
-       দেখাবে।
-    */
-
-        if (target <= now) {
-          target = new Date(year + 1, 3, 19, 0, 0, 0);
-        }
-
-        const difference = target - now;
-
-        const days = Math.floor(difference / (1000 * 60 * 60 * 24));
-
-        const hours = Math.floor((difference / (1000 * 60 * 60)) % 24);
-
-        const minutes = Math.floor((difference / (1000 * 60)) % 60);
-
-        const seconds = Math.floor((difference / 1000) % 60);
-
-        document.getElementById("days").innerText = String(days).padStart(
-          2,
-          "0",
-        );
-
-        document.getElementById("hours").innerText = String(hours).padStart(
-          2,
-          "0",
-        );
-
-        document.getElementById("minutes").innerText = String(minutes).padStart(
-          2,
-          "0",
-        );
-
-        document.getElementById("seconds").innerText = String(seconds).padStart(
-          2,
-          "0",
-        );
-      }
-
-      updateCountdown();
-
-      setInterval(updateCountdown, 1000);
-    </script>
+    <script src="script.js"></script>
   </body>
 </html>
