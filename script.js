@@ -503,23 +503,23 @@ if (celebrateBtn && confettiBox) {
 (function(){
 
     const memoryImages = [
-        "photos/lamiya.jpg",
-        "photos/lamiya1.jpg",
-        "photos/lamiya2.jpg",
-        "photos/lamiya3.jpg",
-        "photos/lamiya4.jpg",
-        "photos/lamiya5.jpg",
-        "photos/lamiya6.jpg",
+        "lamiya.jpg",
+        "lamiya1.jpg",
+        "lamiya2.jpg",
+        "lamiya3.jpg",
+        "lamiya4.jpg",
+        "lamiya5.jpg",
+        "lamiya6.jpg",
 
-        "photos/family.jpg",
-        "photos/family1.jpg",
+        "family.jpg",
+        "family1.jpg",
 
-        "photos/sister.jpg",
-        "photos/sister1.jpg",
-        "photos/sister2.jpg",
+        "sister.jpg",
+        "sister1.jpg",
+        "sister2.jpg",
 
-        "photos/funny.jpg",
-        "photos/funny1.jpg"
+        "funny.jpg",
+        "funny1.jpg"
         
        
     ];
